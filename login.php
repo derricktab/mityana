@@ -6,23 +6,43 @@ if(isset($_POST["login"])){
     $password = htmlentities($_POST["password"], ENT_QUOTES, "UTF-8");
 
     // checking if student exists in the students table.
-    $result = mysqli_query($con, "SELECT * FROM students WHERE username='$username' AND password='$password'");
+    $result = mysqli_query($con, "SELECT * FROM students WHERE username='$username'") or die("SOMETHING WENT WRONG");
 
     $students = mysqli_num_rows($result);
 
     if($students >=1){
-        echo "STUDENT LOGIN SUCCESFULL";
-        header("location: registration.php");
+        while($row = mysqli_fetch_array($result)){
+            $db_password = $row["password"];
+            $user_verified = password_verify($password, $db_password);
+
+            if($user_verified){
+                echo "STUDENT LOGIN SUCCESFULL";
+                header("location: registration.php");            
+            }else{
+                echo "INCORRECT USERNAME AND PASSWORD COMBINATION";
+            }
+        }
+
     }
-
-    if(!$result){
-
+    else{
+        echo "NO STUDENT FOUND";
         // Checking in the staff table.
-        $result1 = mysqli_query($con, "SELECT * FROM staff WHERE username='$username' AND password='$password'");
+        $result1 = mysqli_query($con, "SELECT * FROM staff WHERE username='$username'");
         $staff = mysqli_num_rows($result1);
-        if($stuff >=1){
-            echo "STAFF LOGIN SUCCESFULL";
-            header("location: registration.php");
+        if($staff >=1){
+            while($row1 = mysqli_fetch_array($result1)){
+                $staff_password = $row1["password"];
+                $staff_verified = password_verify($password, $staff_password);
+                if($staff_verified){
+                    echo "STAFF LOGIN SUCCESFULL";
+                    header("location: registration.php");            
+                }else{
+                    echo "INCRORRECT USERNAME AND PASSWORD COMBINATION";
+                }
+            }
+
+        }else{
+            echo "INCORRECT USERNAME AND PASSWORD COMBINATION";
         }
         if(!$result1){
             echo "SOMETHING WENT WRONG IN THE STAFF TABLE.";
@@ -45,7 +65,7 @@ if(isset($_POST["login"])){
     <div class="row">
 
     <!-- LEFT SIDE -->
-        <div class="col-md-6 left my-auto text-white">
+        <div class="col-md-6 left  my-auto text-white">
             <h3 class="mb-5">LOGIN</h3>
     <!-- USERNAME -->
         <div class="form-group">
@@ -79,7 +99,7 @@ if(isset($_POST["login"])){
         </div>
 
         <!-- RIGHT SIDE -->
-        <div class="col-md-6 right">
+        <div class="col-md-6 height right">
             <div class="container">
                 <img src="assets/logo1.png" alt="Logo">
             </div>

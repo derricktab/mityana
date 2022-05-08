@@ -1,9 +1,42 @@
 <?php include("header.php"); ?>
+
+<?php
+
+$success = "";
+
+if (isset($_POST["submit"])) {
+
+    $first_name = htmlentities($_POST["fname"], ENT_QUOTES, "UTF-8");
+    $last_name = htmlentities($_POST["lname"], ENT_QUOTES, "UTF-8");
+    $class = htmlentities($_POST["class"], ENT_QUOTES, "UTF-8");
+    $dob = htmlentities($_POST["dob"], ENT_QUOTES, "UTF-8");
+    $gender = htmlentities($_POST["gender"], ENT_QUOTES, "UTF-8");
+    $nationality = htmlentities($_POST["nationality"], ENT_QUOTES, "UTF-8");
+    $home_district = htmlentities($_POST["home_district"], ENT_QUOTES, "UTF-8");
+    $home_address = htmlentities($_POST["home_address"], ENT_QUOTES, "UTF-8");
+    $religion = htmlentities($_POST["religion"], ENT_QUOTES, "UTF-8");
+    $parent_name = htmlentities($_POST["p_name"], ENT_QUOTES, "UTF-8");
+    $parent_phone = htmlentities($_POST["p_phone"], ENT_QUOTES, "UTF-8");
+    $parent_email = htmlentities($_POST["p_email"], ENT_QUOTES, "UTF-8");
+    $parent_occupation = htmlentities($_POST["p_occupation"], ENT_QUOTES, "UTF-8");
+
+    $result = mysqli_query($con, "INSERT INTO admissions(first_name, last_name,	class,	dob, gender, nationality, home_district, home_address, religion, parent_name, parent_phone, parent_occupation, parent_email) VALUES('$first_name', '$last_name', '$class', '$dob', '$gender', '$nationality', '$home_district', '$home_address', '$religion', '$parent_name', '$parent_phone', '$parent_occupation', '$parent_email')");
+
+    if($result){
+        $success = "true";
+    }else{
+        $success = "false";
+    }
+}
+
+
+?>
+
 <title>Admissions</title>
 
 
 <style>
-    body{
+    body {
         background: url("assets/bg.jpeg");
         background-size: cover;
         background-position: center;
@@ -13,70 +46,103 @@
 </style>
 
 
-    <div class="form-wrapper">
+<div class="form-wrapper">
     <h1 class="font-weight-bold text-center student-reg">JOIN MITYANA STANDARD SS - KAGAVU</h1>
-    <form action="registration.php" method="post">
-        
+
+    <!-- DISPLAYING THE SUCCESS MESSAGE -->
+    <?php if($success == "true") { ?>
+    <div class="container a-alert">
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>SUCCESS!</strong> &nbsp; Admission Request Sent, We Shall Contact You Once Your Admission Has Been Approved.
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
+    </div>
+
+    <!-- ERROR MESSAGE -->
+    <?php } elseif($success == "false") { ?>
+        <div class="container a-alert">
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <strong>ERROR!</strong> &nbsp; Something Went Wrong.........Please Try Again Later
+        <?php echo mysqli_error($con); ?>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
+    </div>
+    <?php } ?>
+
+    <form action="admissions.php" method="POST">
+
         <div class="form-group mt-5">
             <div class="form-row">
 
-            <!-- FIRST NAME -->
-                <div class="col">
+                <!-- FIRST NAME -->
+                <div class="col-md-6 mt-3">
                     <div class="input-group">
-                    <div class="input-group-prepend">
-                        <div class="input-group-text">
-                            <i class="fa fa-user"></i>
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">
+                                <i class="fa fa-user"></i>
+                            </div>
                         </div>
-                    </div>
-                    <input type="text" class="form-control" placeholder="First Name" name="fname">
+                        <input type="text" class="form-control" placeholder="First Name" name="fname" required>
                     </div>
                 </div>
 
                 <!-- LAST NAME -->
-                <div class="col">
+                <div class="col-md-6 mt-3">
                     <div class="input-group">
-                    <div class="input-group-prepend">
-                        <div class="input-group-text">
-                            <i class="fa fa-user"></i>
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">
+                                <i class="fa fa-user"></i>
+                            </div>
                         </div>
-                    </div>
-                    <input type="text" class="form-control" placeholder="Last Name" name="lname">
+                        <input type="text" class="form-control" placeholder="Last Name" name="lname" required>
                     </div>
                 </div>
             </div>
 
-        </div>  
-  
+        </div>
+
         <!-- CLASS -->
         <div class="form-group">
             <div class="input-group">
                 <div class="input-group-prepend">
                     <div class="input-group-text">
-                    <i class="fas fa-chalkboard-teacher"></i>                  
+                        <i class="fas fa-chalkboard-teacher"></i>
+                    </div>
                 </div>
-                </div>
-                <input type="text" class="form-control" placeholder="Class" name="class">
+                <select name="class" class="custom-select" required>
+                    <option value="" disabled selected hidden>Class</option>
+                    <option value="S1">S1</option>
+                    <option value="S2">S2</option>
+                    <option value="S3">S3</option>
+                    <option value="S4">S4</option>
+                    <option value="S5">S5</option>
+                    <option value="S6">S6</option>
+                </select>
+            </div>
         </div>
-        </div>  
 
-  
+
         <!-- GENDER -->
         <div class="form-group">
-            <label><b>GENDER: </b> &nbsp;&nbsp;&nbsp;</label>
-             <div class="form-check form-check-inline">
-                <input type="radio" name="gender" class="form-check-input radio">
-                 <label class="form-check-label">Male</label>                 
-             </div>
+            <label><b>GENDER: </b> </label>
+            <div class="form-check form-check-inline">
+                <input type="radio" name="gender" class="form-check-input radio" value="Male" required />
+                <label class="form-check-label pl-2">Male</label>
+            </div>
 
-             <div class="form-check form-check-inline">
-                <input type="radio" name="gender" class="form-check-input radio">
-                 <label class="form-check-label">Female</label>                 
-             </div>
-        </div>  
+            <div class="form-check form-check-inline">
+                <input type="radio" name="gender" class="form-check-input radio" value="Female" required />
+                <label class="form-check-label pl-2">Female</label>
+            </div>
+        </div>
 
         <!-- DATE OF BIRTH -->
         <div class="form-group">
-         <input id="datepicker" width="300" class="form-control mr-0" placeholder="Date Of Birth"/>
+            <input id="datepicker" class="form-control mr-0" placeholder="Date Of Birth" name="dob" required />
         </div>
 
         <!-- NATIONALITY -->
@@ -84,10 +150,10 @@
             <div class="input-group">
                 <div class="input-group-prepend">
                     <div class="input-group-text">
-                    <i class="fas fa-flag"></i>
+                        <i class="fas fa-flag"></i>
                     </div>
                 </div>
-            <input type="text" name="nationality" id="nationality" class="form-control" placeholder="Nationality">
+                <input type="text" name="nationality" id="nationality" class="form-control" placeholder="Nationality" required>
             </div>
         </div>
 
@@ -96,10 +162,10 @@
             <div class="input-group">
                 <div class="input-group-prepend">
                     <div class="input-group-text">
-                    <i class="fa fa-igloo"></i>
+                        <i class="fa fa-igloo"></i>
                     </div>
                 </div>
-            <input type="text" name="home_district" class="form-control" placeholder="Home District">
+                <input type="text" name="home_district" class="form-control" placeholder="Home District" required>
             </div>
         </div>
 
@@ -108,10 +174,10 @@
             <div class="input-group">
                 <div class="input-group-prepend">
                     <div class="input-group-text">
-                    <i class="fa fa-map-marker-alt"></i>
+                        <i class="fa fa-map-marker-alt"></i>
                     </div>
                 </div>
-            <input type="text" name="home_address" class="form-control" placeholder="Home Address">
+                <input type="text" name="home_address" class="form-control" placeholder="Home Address" required>
             </div>
         </div>
 
@@ -120,51 +186,64 @@
             <div class="input-group">
                 <div class="input-group-prepend">
                     <div class="input-group-text">
-                    <i class="fa fa-pray"></i>
+                        <i class="fa fa-pray"></i>
                     </div>
                 </div>
-            <input type="text" name="religion" class="form-control" placeholder="Religion">
+                <input type="text" name="religion" class="form-control" placeholder="Religion" required>
             </div>
         </div>
-  
 
-        
+
+
         <!-- PARENT NAME -->
         <div class="form-group">
-            <div class="input-group">
+            <div class="input-group name">
                 <div class="input-group-prepend">
                     <div class="input-group-text">
-                    <i class="fa fa-signature"></i>
+                        <i class="fa fa-signature"></i>
                     </div>
                 </div>
-                <input type="text" class="form-control" placeholder="Parent/Guardian's Name" name="pname">
+                <input type="text" class="form-control" placeholder="Parent/Guardian's Name" name="p_name" required>
+            </div>
         </div>
-        </div>  
-        
+
         <!-- PARENT OCCUPATION -->
         <div class="form-group">
-            <div class="input-group">
+            <div class="input-group occupation">
                 <div class="input-group-prepend">
                     <div class="input-group-text">
-                    <i class="fa fa-briefcase"></i>
+                        <i class="fa fa-briefcase"></i>
                     </div>
                 </div>
-                <input type="text" class="form-control" placeholder="Parent/Guardian's Occupation" name="poccupation">
+                <input type="text" class="form-control" placeholder="Parent/Guardian's Occupation" name="p_occupation" required>
+            </div>
         </div>
-        </div>  
-  
+
         <!-- PARENT PHONE NUMBER -->
         <div class="form-group">
-            <div class="input-group">
+            <div class="input-group phone_number">
                 <div class="input-group-prepend">
                     <div class="input-group-text">
                         <i class="fa fa-phone"></i>
                     </div>
                 </div>
-                <input type="text" class="form-control" placeholder="Parent/Guardian's Phone Number" name="pphone">
+                <input type="text" class="form-control" placeholder="Parent/Guardian's Phone Number" name="p_phone" required>
+            </div>
         </div>
-        </div>  
 
+        <!-- PARENT EMAIL -->
+        <div class="form-group">
+            <div class="input-group phone_number">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">
+                        <i class="fa fa-envelope"></i>
+                    </div>
+                </div>
+                <input type="email" class="form-control" placeholder="Parent/Guardian's Email" name="p_email" required>
+            </div>
+        </div>
+
+        <!-- SUBMIT BUTTON -->
         <div class="form-group">
             <input type="submit" value="SUBMIT" class="btn btn-info submit form-control" name="submit">
         </div>
@@ -178,9 +257,9 @@
 </script>
 
 <script>
-        $('#datepicker').datepicker({
-            uiLibrary: 'bootstrap4'
-        });
+    $('#datepicker').datepicker({
+        uiLibrary: 'bootstrap4'
+    });
 </script>
 
 <?php include("footer.php") ?>

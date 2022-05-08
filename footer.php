@@ -23,7 +23,7 @@
             </div>
 
             <!-- Quick Links -->
-            <div class="col-md-4 quick-links">
+            <div class="col-md-4 col-6 quick-links">
                 <h5>Quick Links</h5>
                 <ul>
                     <a href="about.php">
@@ -62,7 +62,7 @@
                     </a>
                 </ul>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-4 col-6">
                 <h5>Contact Details</h5>
   
             </div>

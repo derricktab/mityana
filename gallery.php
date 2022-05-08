@@ -4,7 +4,7 @@
 
 <!-- Making the fallery tab active -->
 <script>
-    $("gallery").addClass("active");
+    $("#gallery").addClass("active");
 </script>
 
 <?php include("footer.php"); ?>

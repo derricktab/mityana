@@ -246,12 +246,16 @@ input{
     padding: 5%;
 }
 
+.height{
+    height: 500px;
+}
+
+
 .login-wrapper .right{
     background-color: rgb(59, 56, 56);
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
     width: 100% !important;
-    height: 500px;
 
 }
 
@@ -265,6 +269,29 @@ input{
     .login-wrapper .right{
         display: none !important;
     }
+    .phone_number input::placeholder{
+        font-size: 14px;
+    }
+    .occupation input::placeholder{
+        font-size: 15px;
+    }
+    .name input::placeholder{
+        font-size: 15px;
+    }
+    .student-reg{
+        font-size: 25px;
+        font-weight: bold;
+    }
+    .form-wrapper{
+        padding: 20px;
+    }
+    #datepicker{
+        width: 50% !important;
+    }
+}
+
+#datepicker{
+    width: 80%;
 }
 
 .login-wrapper img{
@@ -354,6 +381,12 @@ input{
     width: 60%;
     margin-top: 30px;
 }
+
+.a-alert{
+    width: 100%;
+    margin-top: 30px;
+}
+
 .quick-links{
     /* display: flex !important; */
     align-content: center !important;
