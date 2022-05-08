@@ -24,7 +24,9 @@ if(isset($_POST["login"])){
             echo "STAFF LOGIN SUCCESFULL";
             header("location: registration.php");
         }
-        if($result1)
+        if(!$result1){
+            echo "SOMETHING WENT WRONG IN THE STAFF TABLE.";
+        }
     }
 
 
@@ -71,7 +73,7 @@ if(isset($_POST["login"])){
         
         <!-- SUBMIT BUTTON -->
         <div class="form-group">
-            <input type="submit" value="SUBMIT" class="form-control btn btn-warning" name="submit">
+            <input type="submit" value="SUBMIT" class="form-control btn btn-warning" name="login">
         </div>
 
         </div>
