@@ -1,0 +1,127 @@
+.report-card{
+    border-radius: 20px !important;
+    border-left: 5px solid rgba(111, 9, 9, 0.859);
+    border-right: 5px solid rgba(111, 9, 9, 0.859);
+
+}
+
+.report-card-header{
+    background: rgba(111, 9, 9, 0.859) ;
+    border-top-left-radius: 20px !important;
+    border-top-right-radius: 20px !important;
+}
+
+.report-card-footer{
+    background: rgba(111, 9, 9, 0.859) ;
+    border-bottom-left-radius: 20px !important;
+    border-bottom-right-radius: 20px !important;
+}
+
+.logo img{
+    margin: 10px;
+    width: 100px;
+}
+
+.s-name{
+    font-size: 30px !important;
+    font-weight: bold;
+}
+
+.s-address{
+    font-size: 20px !important;
+    font-weight: bold;
+}
+
+.s-contact{
+    font-size: 18px !important;
+}
+
+.divide{
+    background-color: rgb(216, 216, 32);
+    height: 5px;
+    width: 100%;
+    border-radius: 10px;
+}
+
+.s-photo{
+    height: 150px;
+    border-radius: 10px;
+}
+
+.h-text{
+    font-size: 20px;
+}
+
+.t-report{
+    font-weight: bold;
+    color: black;
+}
+
+a:hover{
+    text-decoration: none !important;
+}
+
+.navbar-nav .active{
+    background-color: rgba(111, 9, 9, 0.859) !important;
+    border-radius: 5px;
+    border-top: 2px solid white;
+    border-bottom: 2px solid white;
+}
+
+.navbar-nav .active .nav-link:hover{
+    background-color: rgba(111, 9, 9, 0.859) !important;
+    border-radius: 5px;
+}
+
+.navbar-nav .active span, .navbar-nav .active .nav-link i{
+    color: white;
+}
+.sidebar-light .nav-item.active .nav-link i{
+    color: white;
+}
+
+.mityana-title{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.remarks{
+    font-size: 20px;
+    margin-top: 60px;
+    text-align: left;
+}
+
+.scale{
+    color: rgb(216, 216, 32);
+}
+
+.sidebar-light .nav-item .nav-link:hover{
+    background-color: transparent !important;
+}
+
+.add-button{
+    background-color: rgba(111, 9, 9, 0.859) !important;
+    width: 20% !important;
+    position: absolute;
+    right: 15px;
+    top: 50px;
+    z-index: 5 !important;
+}
+
+.add-button:hover{
+    background-color: rgba(73, 5, 5, 0.859) !important;
+}
+
+.add-btn-color{
+    background-color: rgba(111, 9, 9, 0.859) !important;
+    color: white !important;
+}
+
+.form-wrapper{
+    background-color: rgba(69, 12, 12, 0.614);
+    width: 700px;
+    border-radius: 20px;
+    padding: 30px;
+    margin-top: 130px !important;
+    margin-bottom: 130px !important;
+    border: 3px solid rgba(111, 9, 9, 0.859) ;
+}

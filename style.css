@@ -230,6 +230,17 @@ input{
     padding-left: 10px;
 }
 
+@media(max-width: 720px){
+    .login-wrapper{
+    padding: 0 !important;
+    }
+
+    .login-wrapper input{
+        /* padding: 0 !important; */
+        margin: 0 !important;
+    }
+}
+
 .login-wrapper input{
     margin-right: 0 !important;
 }
@@ -397,4 +408,26 @@ input{
     margin-top: 10px !important;
     margin-bottom: 10px;
 }
+.tel{
+    /* display: none !important; */
+}
+}
+
+
+
+/* GALLERY */
+
+.gallery{
+    text-align: center;
+    margin-top: 100px;
+    margin-bottom: 50px;
+}
+
+.g-c{
+    margin: auto !important;
+    padding: 0 !important;
+}
+
+.mail{
+    margin-right: 2rem !important;
 }

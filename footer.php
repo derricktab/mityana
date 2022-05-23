@@ -33,14 +33,14 @@
                         </li>
                     </a>
                     
-                    <a href="login.php">
+                    <a href="students/">
                         <li>
                             <i class="fa fa-angle-double-right"></i>
                             Student Portal
                         </li>
                     </a>
 
-                    <a href="login.php">
+                    <a href="teachers/">
                         <li>
                             <i class="fa fa-angle-double-right"></i>
                             Staff Login
@@ -54,10 +54,10 @@
                         </li>
                     </a>
 
-                    <a href="#">
+                    <a href="admin/">
                         <li>
                             <i class="fa fa-angle-double-right"></i>
-                            Library
+                            Admin
                         </li>
                     </a>
                 </ul>

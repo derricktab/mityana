@@ -1,4 +1,8 @@
-<?php include("dbcon.php") ?>
+<?php 
+include("dbcon.php"); 
+session_start();
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -13,6 +17,7 @@
     <script src="bootstrap/js/popper.min.js"></script>
     <script src="bootstrap/js/bootstrap.min.js"></script>
     <script src="gijgo/gijgo.js"></script>
+    <script src="main.js"></script>
     <link rel="shortcut icon" href="assets/logo1.png" type="image/x-icon">
     <link rel="stylesheet" href="style.css">
 
@@ -23,11 +28,17 @@
 <!-- TOP BAR -->
 <div class="row topbar p-2">
     <div class="col-md-6">
+
+      <span class="mail">
         <i class="fa fa-envelope"></i>
         <a href="mailto:info@mityanastandard.com">info@mityanastandard.com</a>
-        &nbsp; &nbsp; &nbsp;
-        <i class="fa fa-phone"></i>
-        <a href="tel:+256754893983">+256754893983</a>
+      </span>
+
+        <span class="tel">        
+          <i class="fa fa-phone"></i>
+          <a href="tel:+256754893983" >+256754893983</a>
+        </span>
+
     </div>
 
     <div class="col-md-6">
@@ -50,7 +61,7 @@
 <!-- NAVIGATION BAR -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
 
-<a href="#"><img src="assets/logo1.png" width="50" class="navbar-brand d-lg-none"></a>
+<a href="index.php"><img src="assets/logo1.png" width="50" class="navbar-brand d-lg-none"></a>
 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -89,8 +100,24 @@
     <ul class="navbar-nav buttons">
  
     <li class="nav-item mx-2">
+      <?php
+        if(isset($_SESSION["admin_username"])){
+      ?>
+        <a href="admin/" class="text-white">  
+            <button class="btn btn-outline-info" id="login">Dashboard </button></a>
+        <?php } elseif(isset($_SESSION["student_username"])){?>
+
+        <a href="students/" class="text-white">  
+            <button class="btn btn-outline-info" id="login">Dashboard </button></a>
+        <?php } elseif(isset($_SESSION["admin_username"])){ ?>
+
         <a href="login.php" class="text-white">  
-            <button class="btn btn-outline-danger" id="register">LOGIN </button></a>
+            <button class="btn btn-outline-info" id="login">Dashboard </button></a>
+        <?php }  else{ ?>
+        <a href="login.php" class="text-white">  
+            <button class="btn btn-outline-danger" id="login">LOGIN </button></a>
+        <?php } ?>
+
       </li>
 
       <li class="nav-item mx-2">

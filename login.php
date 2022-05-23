@@ -1,11 +1,13 @@
 <?php include("header.php"); ?>
 
 <?php
+$success = "";
+
 if(isset($_POST["login"])){
     $username = htmlentities($_POST["username"], ENT_QUOTES, "UTF-8");
     $password = htmlentities($_POST["password"], ENT_QUOTES, "UTF-8");
 
-    // checking if student exists in the students table.
+    // CHECKING IF THE USER IS A STUDENT
     $result = mysqli_query($con, "SELECT * FROM students WHERE username='$username'") or die("SOMETHING WENT WRONG");
 
     $students = mysqli_num_rows($result);
@@ -14,38 +16,75 @@ if(isset($_POST["login"])){
         while($row = mysqli_fetch_array($result)){
             $db_password = $row["password"];
             $user_verified = password_verify($password, $db_password);
+            $student_lname = $row["last_name"];
+            $student_fname = $row["first_name"];
+            $class = $row["class"];
 
             if($user_verified){
                 echo "STUDENT LOGIN SUCCESFULL";
-                header("location: registration.php");            
+
+                $_SESSION['student'] = "true";
+                $_SESSION['student_username'] = $username;
+                $_SESSION['class'] = $class;
+                header("location: students/index.php"); 
+                $success = "true";          
             }else{
-                echo "INCORRECT USERNAME AND PASSWORD COMBINATION";
+                $success = "false";
             }
         }
 
     }
     else{
-        echo "NO STUDENT FOUND";
-        // Checking in the staff table.
-        $result1 = mysqli_query($con, "SELECT * FROM staff WHERE username='$username'");
+        // CHECKING IF THE USER IS A TEACHER
+        $result1 = mysqli_query($con, "SELECT * FROM teachers WHERE username='$username'");
         $staff = mysqli_num_rows($result1);
         if($staff >=1){
             while($row1 = mysqli_fetch_array($result1)){
                 $staff_password = $row1["password"];
+                $full_name = $row1["full_name"];
+
                 $staff_verified = password_verify($password, $staff_password);
+                
                 if($staff_verified){
-                    echo "STAFF LOGIN SUCCESFULL";
-                    header("location: registration.php");            
+                    $_SESSION["teacher"] = "true";
+                    $_SESSION["teacher_username"] = $username;
+                    header("location: teachers/"); 
+                    $success = "true";
                 }else{
-                    echo "INCRORRECT USERNAME AND PASSWORD COMBINATION";
+                    $success = "false";
                 }
             }
 
         }else{
-            echo "INCORRECT USERNAME AND PASSWORD COMBINATION";
+
+            // CHECKING IF THE USER IS AN ADMIN
+            $result2 = mysqli_query($con, "SELECT * FROM admin WHERE username='$username'");
+            $admin = mysqli_num_rows($result2);
+            if($admin >=1){
+                while($row2 = mysqli_fetch_array($result2)){
+                    $admin_password = $row2["password"];
+                    $admin_verified = password_verify($password, $admin_password);
+                    if($admin_verified){
+                        $_SESSION["admin"] = "true";
+                        $_SESSION["admin_username"] = $username;
+                        header("location: admin/index.php");
+                        $success = "true";            
+                    }else{
+                        $success= "false";
+                    }
+                }
+    
+            }else{
+                $success = "false";
+                
+            }
+            if(!$result1){
+                $success = "false";
+            }    
+
         }
         if(!$result1){
-            echo "SOMETHING WENT WRONG IN THE STAFF TABLE.";
+            $success = "false";
         }
     }
 
@@ -59,8 +98,32 @@ if(isset($_POST["login"])){
 
 <title>Login</title>
 
+ <!-- DISPLAYING THE SUCCESS MESSAGE -->
+<?php if($success == "true") { ?>
+<div class="container c-alert">
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+    <strong>SUCCESS!</strong> &nbsp; LOGIN SUCCESFULL.
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+    </div>
+</div>
+
+<!-- ERROR MESSAGE -->
+<?php } elseif($success == "false") { ?>
+    <div class="container c-alert">
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+    <strong>ERROR!</strong> &nbsp; Invalid Login Credentials
+    <?php echo mysqli_error($con); ?>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+    </div>
+</div>
+<?php } ?>
 
 <div class="login-wrapper mx-auto">
+   
     <form action="login.php" method="POST">
     <div class="row">
 
@@ -110,4 +173,11 @@ if(isset($_POST["login"])){
 
     </form>
 </div>
+
+
+<script>
+    $("#login").removeClass("btn-outline-danger");
+    $("#login").addClass("btn-danger");
+</script>
+
 <?php include("footer.php"); ?>

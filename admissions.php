@@ -19,8 +19,10 @@ if (isset($_POST["submit"])) {
     $parent_phone = htmlentities($_POST["p_phone"], ENT_QUOTES, "UTF-8");
     $parent_email = htmlentities($_POST["p_email"], ENT_QUOTES, "UTF-8");
     $parent_occupation = htmlentities($_POST["p_occupation"], ENT_QUOTES, "UTF-8");
+    $pschool = htmlentities($_POST["pschool"], ENT_QUOTES, "UTF-8");
+    $pgrade = htmlentities($_POST["pgrade"], ENT_QUOTES, "UTF-8");
 
-    $result = mysqli_query($con, "INSERT INTO admissions(first_name, last_name,	class,	dob, gender, nationality, home_district, home_address, religion, parent_name, parent_phone, parent_occupation, parent_email) VALUES('$first_name', '$last_name', '$class', '$dob', '$gender', '$nationality', '$home_district', '$home_address', '$religion', '$parent_name', '$parent_phone', '$parent_occupation', '$parent_email')");
+    $result = mysqli_query($con, "INSERT INTO admissions(first_name, last_name,	class,	pschool, pgrade, dob, gender, nationality, home_district, home_address, religion, parent_name, parent_phone, parent_occupation, parent_email, date_received) VALUES('$first_name', '$last_name', '$class', '$pschool', '$pgrade', '$dob', '$gender', '$nationality', '$home_district', '$home_address', '$religion', '$parent_name', '$parent_phone', '$parent_occupation', '$parent_email', NOW())") or die(mysqli_error($con));
 
     if($result){
         $success = "true";
@@ -122,6 +124,31 @@ if (isset($_POST["submit"])) {
                     <option value="S5">S5</option>
                     <option value="S6">S6</option>
                 </select>
+            </div>
+        </div>
+
+
+        <!-- PREVIOUS SCHOOL -->
+        <div class="form-group">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">
+                        <i class="fa fa-building"></i>
+                    </div>
+                </div>
+                <input type="text" name="pschool" class="form-control" placeholder="Previous School" required>
+            </div>
+        </div>
+
+        <!-- PREVIOUS GRADE -->
+        <div class="form-group">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">
+                        <i class="fa fa-graduation-cap"></i>
+                    </div>
+                </div>
+                <input type="text" name="pgrade" class="form-control" placeholder="Previous Grade ex(31 Aggregates/16 Points)" required>
             </div>
         </div>
 
@@ -252,8 +279,8 @@ if (isset($_POST["submit"])) {
 
 
 <script>
-    $("#register").removeClass("btn-outline-danger");
-    $("#register").addClass("btn-danger");
+    $("#admissions").removeClass("btn-outline-warning");
+    $("#admissions").addClass("btn-warning");
 </script>
 
 <script>
@@ -261,28 +288,6 @@ if (isset($_POST["submit"])) {
         uiLibrary: 'bootstrap4'
     });
 </script>
-
-<?php include("footer.php") ?>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<script>
-    $("#admissions").removeClass("btn-outline-success");
-    $("#admissions").addClass("btn-success");
-</script>
-
-
-
 
 
 <?php include("footer.php"); ?>

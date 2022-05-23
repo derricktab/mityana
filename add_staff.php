@@ -19,7 +19,7 @@ if(isset($_POST["add_staff"])){
     $password = password_hash($password, PASSWORD_DEFAULT);
 
     // inserting the values into the database
-    $result = mysqli_query($con, "INSERT INTO staff(full_name, email, phonenumber, address, username, password) VALUES('$fullname', '$email', '$phone', '$address', '$username', '$password')") or die("Somethign went wrong".mysqli_error($con));
+    $result = mysqli_query($con, "INSERT INTO teachers(full_name, email, phonenumber, address, username, password) VALUES('$fullname', '$email', '$phone', '$address', '$username', '$password')") or die("Somethign went wrong".mysqli_error($con));
 
     if($result){
         echo "added staff member succesfully";
