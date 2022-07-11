@@ -27,8 +27,8 @@ if(isset($_SESSION["student_username"]) && $_SESSION["student"] == "true"){
   $dob = $row["dob"];
   $gender = $row["gender"];
   $nationality = $row["nationality"];
-  $stream = $row["stream"];
-  $student_image = $row["image"];
+  // $stream = $row["stream"];
+  // $student_image = $row["image"];
   $home_district = $row["home_district"];
   $date_admitted = $row["date_admitted"];
   $religion = $row["religion"];

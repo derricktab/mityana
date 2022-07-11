@@ -137,7 +137,7 @@ if(isset($_POST["submit"])){
         <div class="cards mx-auto">
             <i class="fa fa-map-marker-alt"></i>
             <h5 class="d-flex justify-content-center mt-3 font-weight-bold text-warning">ADDRESS</h5>
-            <p class="d-flex justify-content-center">Mityana Standard jadfaf</p>
+            <p class="d-flex justify-content-center">Plot 333,Kagavu Road. 3KM Off Mityana Road.</p>
         </div>            
         </div>
 
@@ -145,7 +145,7 @@ if(isset($_POST["submit"])){
         <div class="cards mx-auto">
             <i class="fa fa-phone"></i>
             <h5 class="d-flex justify-content-center mt-3 font-weight-bold text-warning">PHONE</h5>
-            <p class="d-flex justify-content-center">+256754893983</p>
+            <p class="d-flex justify-content-center">0772852858 / 0753818803</p>
         </div>    
     </div>
 

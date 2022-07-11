@@ -431,3 +431,91 @@ input{
 .mail{
     margin-right: 2rem !important;
 }
+
+.f-icon{
+    color: orange !important;
+}
+
+.quick-links i{
+    color: orange !important;
+}
+
+.w-image img{
+    height: 450px;
+    width: 550px;
+    border-radius: 30px !important;
+}
+
+.w-text{
+    text-align: justify;
+}
+
+.w-row{
+    margin: 70px;
+}
+
+.d-img{
+    height: 350px;
+    width: 300px;
+    margin-left: 20px;
+    padding: 0 !important;
+    border-radius: 30px;
+}
+
+/* academics */
+.img-academics{
+    background: url("assets/a1.png"); 
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+/* student facilities image */
+.img-facilities{
+    background: url("assets/lab2.jpg"); 
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+/* co curricular activities */
+.img-activities{
+    background: url("assets/activities.jpg"); 
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+
+.d-img:hover{
+    border-radius: 0px !important;
+    /* transition-duration: 10; */
+}
+.d-img .wrap{
+    height: 100% !important;
+    width: 100% !important;
+    background-color: rgba(0, 0, 0, 0.579);
+    border-radius: 30px;
+}
+.d-img .wrap:hover{
+    border-radius: 0px !important;
+    transition-delay: 100ms;
+    transition-duration: 100ms;
+}
+.wrap h3{
+    border-left: 7px solid orange;
+    padding-left: 3px;
+    color: white;
+    margin-left: 100px;
+    padding-top: 50px;
+
+}
+@media (max-width: 720px) {
+    .w-image img{
+        display: none !important;
+    }
+
+    .w-row{
+        margin: 35px;
+    }
+}

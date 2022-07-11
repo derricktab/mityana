@@ -64,7 +64,24 @@
             </div>
             <div class="col-md-4 col-6">
                 <h5>Contact Details</h5>
-  
+
+                <!-- ADDRESS -->
+                <div class="row mt-2">
+                    <div class="col-1"> <i class="fas fa-map-marker-alt f-icon"></i> </div>
+                    <div class="col-11">Plot 333,Kagavu Road. 3KM Off Mityana Road. <br> P.O.BOX 41 Mityana</div>
+                </div>
+
+                <!-- PHONE NUMBER -->
+                <div class="row mt-2">
+                    <div class="col-1"> <i class="fas fa-phone f-icon"></i> </div>
+                    <div class="col-11">0772852858 / 0753818803 / 0704882951</div>
+                </div>
+
+                <!-- EMAIL -->
+                <div class="row mt-2">
+                    <div class="col-1"> <i class="fas fa-envelope f-icon"></i> </div>
+                    <div class="col-11">info@mityanastandard.com</div>
+                </div>
             </div>
         </div>
 
