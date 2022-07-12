@@ -1,35 +1,14 @@
 <?php include("header.php") ?>
 
 <?php 
-
 $success = "";
-$id = "";
-$subject_name = "";
-$code = "";
-$teacher_username = "";
-$teacher_name = "";
-
-if(isset($_GET["tid"])){
-
-    $id = $_GET["tid"];
-    $result = mysqli_query($con, "SELECT * FROM teachers WHERE id='$id'") or die(mysqli_error($con));
-
-    $row = mysqli_fetch_array($result);
-    $teacher_name = $row["full_name"];
-    $teacher_username = $row["username"];
-}
-
-    echo $teacher_username;
 
 if(isset($_POST["submit"])){
-    
-    $teacher_username = htmlentities($_POST["teacher_username"], ENT_QUOTES, "UTF-8");
-    $class = htmlentities($_POST["class"], ENT_QUOTES, "UTF-8");
-    $subject = htmlentities($_POST["subject"], ENT_QUOTES, "UTF-8");
-    echo $subject;
-    echo $teacher_username;
 
-    $result = mysqli_query($con, "INSERT INTO teacher_subject(teacher, class, subject) VALUES('$teacher_username', '$class', '$subject') ");
+    $class = htmlentities($_POST["class"], ENT_QUOTES, "UTF-8");
+    $stream = htmlentities($_POST["stream"], ENT_QUOTES, "UTF-8");
+
+    $result = mysqli_query($con, "INSERT INTO class_and_stream(class, stream) VALUES('$class', '$stream')");
 
     if($result){
         $success = "true";
@@ -41,13 +20,13 @@ if(isset($_POST["submit"])){
 ?>
 
 <div class="form-wrapper mx-auto my-5">
-    <h1 class="font-weight-bold text-center text-white">ASSIGN TEACHER SUBJECT</h1>
+    <h1 class="font-weight-bold text-center text-white">Add Class</h1>
 
     <!-- DISPLAYING THE SUCCESS MESSAGE -->
     <?php if($success == "true") { ?>
     <div class="container a-alert">
         <div class="alert alert-success alert-dismissible fade show" role="alert">
-        <strong>SUCCESS!</strong> &nbsp; Teacher Assigned Subject Succesfully.
+        <strong>SUCCESS!</strong> &nbsp; Class Added Succesfully.
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>
@@ -67,28 +46,15 @@ if(isset($_POST["submit"])){
     </div>
     <?php } ?>
 
-    <form action="teachers_subjects.php" method="POST" class="mt-4">
+    <form action="add_class.php" method="POST" class="mt-4">
 
-        <!-- Teacher Name -->
+
+        <!-- CLASS -->
         <div class="form-group">
             <div class="input-group">
                 <div class="input-group-prepend">
                     <div class="input-group-text">
                         <i class="fa fa-building"></i>
-                    </div>
-                </div>
-                <input type="text" name="teacher_name" class="form-control" placeholder="Subject Name" value="<?php echo $teacher_name ?>">
-            </div>
-        </div>
-
-        <input type="hidden" name="teacher_username" value="<?php echo $teacher_username ?>">
-
-        <!-- Class -->
-        <div class="form-group">
-            <div class="input-group">
-                <div class="input-group-prepend">
-                    <div class="input-group-text">
-                        <i class="fa fa-graduation-cap"></i>
                     </div>
                 </div>
                 <select name="class" class="form-control">
@@ -102,25 +68,24 @@ if(isset($_POST["submit"])){
             </div>
         </div>
 
-  
-        <!-- SUBJECTS -->
+        <!-- Stream Name -->
         <div class="form-group">
             <div class="input-group">
                 <div class="input-group-prepend">
                     <div class="input-group-text">
-                        <i class="fa fa-graduation-cap"></i>
+                        <i class="fa fa-building"></i>
                     </div>
                 </div>
-                <select name="subject" class="form-control">
-                    <!-- FETCHING SUBJECTS FROM THE DATABASE -->
-                    <?php 
-                    $result = mysqli_query($con, "SELECT * FROM subjects");
+                <select name="stream" class="form-control">
 
+                <!-- FETCHING THE STREAMS FROM DATABASE -->
+                    <?php 
+                    $result = mysqli_query($con, "SELECT * FROM streams");
                     if($result){
-                        while($row = mysqli_fetch_array($result)){
-                            $subject_name = $row["name"];
+                        while($row=mysqli_fetch_array($result)){
+                            $stream = $row["stream"];
                     ?>
-                    <option value="<?php echo $subject_name ?>"><?php echo $subject_name ?> </option>
+                    <option value="<?php echo $stream ?>"><?php echo $stream ?></option>
                     <?php }} ?>
                 </select>
             </div>
@@ -131,8 +96,10 @@ if(isset($_POST["submit"])){
             <input type="submit" value="SUBMIT" class="btn btn-warning submit form-control" name="submit">
         </div>
     </form>
+    
+    <!-- back to classes -->
+    <a href="classes.php" class="text-white">Back To Classes</a>
 
-    <a href="subjects.php" class="text-white">Back To Teachers</a>
 </div>
 
 

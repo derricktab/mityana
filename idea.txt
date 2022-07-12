@@ -1,0 +1,1 @@
+use has_image column in students table to track students who havent got a photo uploaded for them.s

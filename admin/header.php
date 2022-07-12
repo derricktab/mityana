@@ -88,6 +88,14 @@ if(!isset($_SESSION["admin_username"])){
         </a>
       </li>
 
+      <!-- CLASSES -->
+      <li class="nav-item" id="classes">
+        <a class="nav-link collapsed" href="classes.php">
+          <i class="fa fa-table fa-fw"></i>
+          <span>Classes</span>
+        </a>
+      </li>
+
       <!-- Report Cards -->
       <li class="nav-item" id="report_cards">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#reportCollapse" aria-expanded="true"
