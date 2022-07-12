@@ -73,42 +73,107 @@
 </div>
 
 
+
+<section class="values m-5 d-flex">
+  <div class="row">
+
+    <!-- VISION -->
+    <div class="col-md-3 col-sm-6">
+      <div class="card shadow" style="border: 1px solid orange;">
+        <i class="fab fa-dribbble d-flex mx-auto" style="background-color: orange"></i>
+        <div class="card-body text-center">
+          <h5 class="font-weight-bold v-h pb-1">SCHOOL VISION</h5>
+          <p>To be a leading school in the country,producing quality citizens of high morals.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- MISSION -->
+    <div class="col-sm-6 col-md-3">
+      <div class="card shadow" style="border: 1px solid maroon;">
+        <i class="fa fa-bullseye d-flex mx-auto text-white" style="background-color: maroon"></i>
+        <div class="card-body text-center">
+          <h5 class="font-weight-bold v-h pb-1">SCHOOL MISSION</h5>
+          <p>To be a leading school in the country,producing quality citizens of high morals.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- CORE VALUES -->
+    <div class="col-sm-6 col-md-3">
+      <div class="card shadow" style="border: 1px solid green;">
+      <div class="card-head">
+        <i class="fa fa-tachometer d-flex mx-auto text-white" style="background-color: green"></i>        
+      </div>
+
+        <div class="card-body text-center">
+          <h5 class="font-weight-bold v-h pb-1">CORE VALUES</h5>
+          <p>God fearing <br>
+            Integrity <br>
+            Responsible <br>
+            Diversity <br>
+            Determination and courage.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- MOTO -->
+    <div class="col-sm-6 col-md-3">
+      <div class="card shadow" style="border: 1px solid blue;">
+      <div class="card-head">
+        <i class="fa fa-fire d-flex mx-auto text-white" style="background-color: blue"></i>        
+      </div>
+
+        <div class="card-body text-center">
+          <h5 class="font-weight-bold v-h pb-1">MOTO</h5>
+          <p style="font-size: 20px;">"Education For Development"</p>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+
+</section>
 <!-- DEPARTMENTS -->
+<section class="departments">
+  <h5 class="text-center d-small">OUR</h5>
+  <h2 class="text-center d-head ">DEPARTMENTS</h2>
 
+  <div class="row mx-5 my-4">
 
-<h5 class="text-center">OUR</h5>
-<h2 class="text-center">DEPARTMENTS</h2>
-
-<div class="row mx-5 my-4">
-
-  <div class="col-md-3 d-img img-academics mx-auto">
-    <div class="wrap my-auto">
-      <h3>Academics</h3>
-      <p class="text-white p-5">Mityana Standard SS Kagavu is a co-educational boarding and government aided secondary school.
-
-      </p>
+    <div class="col-md-3 d-img img-academics mx-auto">
+      <div class="wrap my-auto">
+        <h3>Academics</h3>
+        <p class="text-white p-5">Mityana Standard SS Kagavu is a co-educational boarding and government aided secondary school.
+        </p>
+      </div>
     </div>
-  </div>
 
-  <div class="col-md-3 d-img img-facilities mx-auto">
-    <div class="wrap my-auto">
-      <h3>Facilities</h3>
-      <p class="text-white p-5">Students enjoy our state-of-the-art facilities to meet the needs, beautiful and comfortable learning environment.
+    <div class="col-md-3 d-img img-facilities mx-auto">
+      <div class="wrap my-auto">
+        <h3>Facilities</h3>
+        <p class="text-white p-5">Students enjoy our state-of-the-art facilities to meet the needs, beautiful and comfortable learning environment.
 
-      </p>
+        </p>
+      </div>
     </div>
-  </div>
 
-  <div class="col-md-3 d-img img-activities img-mx-auto">
-    <div class="wrap my-auto">
-      <h3>Co-Curricular Activities</h3>
-      <p class="text-white p-5">Talent is a God given gift. We help our students to nurture the talent.
-      </p>
+    <div class="col-md-3 d-img img-activities mx-auto">
+      <div class="wrap my-auto">
+        <h3>Co-Curricular Activities</h3>
+        <p class="text-white p-5">Talent is a God given gift. We help our students to nurture the talent.
+        </p>
+      </div>
     </div>
+
   </div>
+</section>
+
+<div class="container d-flex mt-5">
+  <a href="admissions.php" class="btn btn-outline-success apply-btn mx-auto shadow">APPLY NOW</a>
 
 </div>
-
 
 <script>
   $("#home").addClass("active");

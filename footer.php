@@ -1,4 +1,4 @@
-<footer>
+<footer style="position: absolute !important;">
     <div class="footer bg-dark">
 
         <div class="row text-center">

@@ -161,6 +161,12 @@ if(isset($_POST["submit"])){
     
 </div>
 
+<!-- GOOGLE MAP OF THE SCHOOL -->
+<section class="map mx-auto mt-5">
+    <h5 class="text-center l-s">MAP</h5>
+    <h2 class="text-center l-h">LOCATION</h2>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2497.165086072314!2d32.150290649208294!3d0.3780660108040779!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x177d10735ac39349%3A0x865f203cab5200e4!2sMityana%20Standard%20Secondary%20School!5e1!3m2!1sen!2sug!4v1657514199773!5m2!1sen!2sug" width="600" height="450" style="border:0;" allowfullscreen="true" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+</section>
 
 <script>
     $("#contact").addClass("active");

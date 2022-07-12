@@ -80,29 +80,12 @@ if(!isset($_SESSION["admin_username"])){
 
       </li>
 
-      <!-- CLASSES -->
-      <li class="nav-item" id="students">
-        <a class="nav-link collapsed" href="students.php" data-toggle="collapse" data-target="#collapseForm" aria-expanded="true"
-          aria-controls="collapseForm">
+      <!-- STREAMS -->
+      <li class="nav-item" id="streams">
+        <a class="nav-link collapsed" href="streams.php">
           <i class="fa fa-table fa-fw"></i>
-          <span>Classes</span>
+          <span>Streams</span>
         </a>
-        <div id="collapseForm" class="collapse" aria-labelledby="headingForm" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header text-info">O-LEVEL</h6>
-            <a class="collapse-item" href="students.php?class=s1">S1</a>
-            <a class="collapse-item" href="students.php?class=s2">S2</a>
-            <a class="collapse-item" href="students.php?class=s3">S3</a>
-            <a class="collapse-item" href="students.php?class=s4">S4</a>
-          </div>
-
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header text-info">A-LEVEL</h6>
-            <a class="collapse-item" href="students.php?class=s5">S5</a>
-            <a class="collapse-item" href="students.php?class=s6">S6</a>
-          </div>
-        </div>
-
       </li>
 
       <!-- Report Cards -->
@@ -178,12 +161,14 @@ if(!isset($_SESSION["admin_username"])){
         STAFF
       </div>
    
+      <!-- TEACHERS -->
       <li class="nav-item" id="teachers">
         <a class="nav-link" href="teachers.php">
           <i class="fas fa-fw fa-chart-area"></i>
           <span>Teachers</span>
         </a>
       </li>
+  
       <hr class="sidebar-divider">
     </ul>
     <!-- Sidebar -->

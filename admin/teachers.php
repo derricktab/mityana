@@ -63,10 +63,10 @@ if(isset($_POST["delete"])){
             <td><?php echo number_format($row["salary"]) ?> </td>
             <td><?php echo $row["username"] ?> </td> 
             <td>
-                <a href="edit_teacher.php?id=<?php echo $row['id'] ?>" class="btn btn-sm btn-primary">Update</a>
-                <a href="#deleteModal" class="btn btn-sm btn-danger open-modal" data-toggle="modal"  data-target="#deleteModal" data-id="<?php echo $row['id'] ?>">Delete</a>
-        
-        </td>
+                <a href="edit_teacher.php?id=<?php echo $row['id'] ?>" class="btn btn-sm btn-primary my-1">Update</a>
+                <a href="teachers_subjects.php?tid=<?php echo $row['id'] ?>" class="btn btn-sm btn-warning my-1">Assign Subject</a>
+                <a href="#deleteModal" class="btn btn-sm btn-danger open-modal my-1" data-toggle="modal"  data-target="#deleteModal" data-id="<?php echo $row['id'] ?>">Delete</a>
+            </td>
             </tr>
 
         <?php } ?>
