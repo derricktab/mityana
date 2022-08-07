@@ -5,100 +5,156 @@ $success = "";
 $rejected = "";
 
 
-if(isset($_POST["approve"])){
+if (isset($_POST["approved"])) {
 
 
-  try{
+  try {
 
-  // mysqli_begin_transaction($con);
-  // mysqli_autocommit($con, false);
+    mysqli_begin_transaction($con);
+    mysqli_autocommit($con, false);
 
-  
-  $id = htmlentities($_POST["id"], ENT_QUOTES, "UTF-8");
-  
-  $admissions = mysqli_query($con, "SELECT * FROM admissions WHERE id='$id'")or die(mysqli_error($con));
+    // receiving data from 
+    $id = htmlentities($_POST["id"], ENT_QUOTES, "UTF-8");
+    $stream = htmlentities($_POST["stream"], ENT_QUOTES, "UTF-8");
 
-  $admission_details = mysqli_fetch_array($admissions);
+    // SCRIPT FOR UPLOADING THE STUDENT IMAGE
+    $target_dir = "/uploads";
 
-  // initializing student number and parent number
-  $student_no = "";
-  $parent_no = "";
+    
+    $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+    $uploadOk = 1;
+    $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 
-  $first_name = $admission_details["first_name"];
-  $last_name = $admission_details["last_name"];
-  $class = $admission_details["class"];
-  $dob = $admission_details["dob"];
-  $gender = $admission_details["gender"];
-  $nationality = $admission_details["nationality"];
-  $home_district = $admission_details["home_district"];
-  $home_address = $admission_details["home_address"];
-  $religion = $admission_details["religion"];
-  $parent_name = $admission_details["parent_name"];
-  $parent_phone = $admission_details["parent_phone"];
-  $parent_email = $admission_details["parent_email"];
-  $parent_occupation = $admission_details["parent_occupation"];
-
-  
-// PARENTS //
-
-  // CHECKING IF THERE ARE SOME PARENTS IN THE DATABASE
-  $chk_parents = mysqli_query($con, "SELECT * FROM parents ORDER BY parent_no DESC LIMIT 2")or die(mysqli_error($con));
-  $num_parents = mysqli_num_rows($chk_parents);
-
-  // CALCULATIING PARENT NUMBER
-  if($num_parents < 1){
-    $parent_no = date("Y")."0001";
-  }else{
-    $row4 = mysqli_fetch_array($chk_parents);
-    $fetched_pno = $row4["parent_no"];
-    $parent_no = $fetched_pno + 1;
-  }
-  
-  // ADDING THE PARENT TO THE DATABASE
-  $add_parent = mysqli_query($con, "INSERT INTO parents(parent_no, name, phone, email, occupation) VALUES('$parent_no', '$parent_name', '$parent_phone', '$parent_email', '$parent_occupation')")or die(mysqli_error($con));
-
-  // CHECKING IF THE PARENT WAS ADDED SUCCESFULLY
-  if(!$add_parent){
-    echo mysqli_error($con);
-    mysqli_rollback($con);
-    $success = "false";
-  }
-
-// STUDENTS //
-
-  // CHECKING IF THERE ARE SOME STUDENTS IN THE DATABASE
-  $sdnum = mysqli_query($con, "SELECT * FROM students ORDER BY student_id DESC LIMIT 2") or die(mysqli_error($con));
-
-  $n_students = mysqli_num_rows($sdnum);
-
-  // CALCULATING STUDENT NUMBER
-  if($n_students < 1){
-    $student_no = date("Y")."0001";
-  }else{
-    $row3 = mysqli_fetch_array($sdnum);
-    $fetched_sno = $row3["student_id"];
-    $student_no = $fetched_sno + 1;
-  }
-
-  $username = $student_no;
-  $password = password_hash($student_no, PASSWORD_DEFAULT);
-
-  // ADDING THE STUDENT TO THE DATABASE
-  $add_student = mysqli_query($con, "INSERT INTO students(student_id, first_name, last_name, class, dob, gender, nationality, home_district, home_address, religion, parent, date_admitted, username, password) VALUES('$student_no', '$first_name', '$last_name', '$class', '$dob', '$gender', '$nationality', '$home_district', '$home_address', '$religion', '$parent_no', NOW(), '$username', '$password')")or die(mysqli_error($con));
-
-  // CHECKING IF THE STUDENT WAS INSERTED INTO THE DATABASE
-  if($add_student){
-
-    // DELETING THAT ROW FROM ADMISSIONS TABLE
-    $deleted = mysqli_query($con, "DELETE FROM admissions WHERE id='$id'") or die(mysqli_error($con));
-
-    if(!$deleted){
-      mysqli_rollback($con);
+    // Check if image file is a actual image or fake image
+    if (isset($_POST["submit"])) {
+      $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
+      if ($check !== false) {
+        echo "File is an image - " . $check["mime"] . ".";
+        $uploadOk = 1;
+      } else {
+        echo "File is not an image.";
+        $uploadOk = 0;
+      }
     }
 
-    // ASSIGNING STUDENTS SUBJECTS.
-    if($class == 'S1' || $class == 'S2' || $class == 'S3' || $class == 'S4'){
-      $result = mysqli_query($con, "INSERT INTO subject_offered(student, subject) VALUES('$student_no', 'ENGLISH'),
+    // Check if file already exists
+    if (file_exists($target_file)) {
+      echo "Sorry, file already exists.";
+      $uploadOk = 0;
+    }
+
+    // Check file size
+    if ($_FILES["fileToUpload"]["size"] > 500000) {
+      echo "Sorry, your file is too large.";
+      $uploadOk = 0;
+    }
+
+    // Allow certain file formats
+    if (
+      $imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+      && $imageFileType != "gif"
+    ) {
+      echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+      $uploadOk = 0;
+    }
+
+    // Check if $uploadOk is set to 0 by an error
+    if ($uploadOk == 0) {
+      echo "Sorry, your file was not uploaded.";
+      // if everything is ok, try to upload file
+    } else {
+      if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+        echo "The file " . htmlspecialchars(basename($_FILES["fileToUpload"]["name"])) . " has been uploaded.";
+      } else {
+        echo "Sorry, there was an error uploading your file.";
+      }
+    }
+
+
+    // getting the student data from the admissions table.
+    $admissions = mysqli_query($con, "SELECT * FROM admissions WHERE id='$id'") or die(mysqli_error($con));
+
+    $admission_details = mysqli_fetch_array($admissions);
+
+    // initializing student number and parent number
+    $student_no = "";
+    $parent_no = "";
+
+    $first_name = $admission_details["first_name"];
+    $last_name = $admission_details["last_name"];
+    $class = $admission_details["class"];
+    $dob = $admission_details["dob"];
+    $gender = $admission_details["gender"];
+    $nationality = $admission_details["nationality"];
+    $home_district = $admission_details["home_district"];
+    $home_address = $admission_details["home_address"];
+    $religion = $admission_details["religion"];
+    $parent_name = $admission_details["parent_name"];
+    $parent_phone = $admission_details["parent_phone"];
+    $parent_email = $admission_details["parent_email"];
+    $parent_occupation = $admission_details["parent_occupation"];
+
+
+    // PARENTS //
+
+    // CHECKING IF THERE ARE SOME PARENTS IN THE DATABASE
+    $chk_parents = mysqli_query($con, "SELECT * FROM parents ORDER BY parent_no DESC LIMIT 2") or die(mysqli_error($con));
+    $num_parents = mysqli_num_rows($chk_parents);
+
+    // CALCULATIING PARENT NUMBER
+    if ($num_parents < 1) {
+      $parent_no = date("Y") . "0001";
+    } else {
+      $row4 = mysqli_fetch_array($chk_parents);
+      $fetched_pno = $row4["parent_no"];
+      $parent_no = $fetched_pno + 1;
+    }
+
+    // ADDING THE PARENT TO THE DATABASE
+    $add_parent = mysqli_query($con, "INSERT INTO parents(parent_no, name, phone, email, occupation) VALUES('$parent_no', '$parent_name', '$parent_phone', '$parent_email', '$parent_occupation')") or die(mysqli_error($con));
+
+    // CHECKING IF THE PARENT WAS ADDED SUCCESFULLY
+    if (!$add_parent) {
+      echo mysqli_error($con);
+      mysqli_rollback($con);
+      $success = "false";
+    }
+
+    // STUDENTS //
+
+    // CHECKING IF THERE ARE SOME STUDENTS IN THE DATABASE
+    $sdnum = mysqli_query($con, "SELECT * FROM students ORDER BY student_id DESC LIMIT 2") or die(mysqli_error($con));
+
+    $n_students = mysqli_num_rows($sdnum);
+
+    // CALCULATING STUDENT NUMBER
+    if ($n_students < 1) {
+      $student_no = date("Y") . "0001";
+    } else {
+      $row3 = mysqli_fetch_array($sdnum);
+      $fetched_sno = $row3["student_id"];
+      $student_no = $fetched_sno + 1;
+    }
+
+    $username = $student_no;
+    $password = password_hash($student_no, PASSWORD_DEFAULT);
+
+    // ADDING THE STUDENT TO THE DATABASE
+    $add_student = mysqli_query($con, "INSERT INTO students(student_id, first_name, last_name, class, dob, gender, nationality, home_district, home_address, religion, parent, date_admitted, username, password) VALUES('$student_no', '$first_name', '$last_name', '$class', '$dob', '$gender', '$nationality', '$home_district', '$home_address', '$religion', '$parent_no', NOW(), '$username', '$password')") or die(mysqli_error($con));
+
+    // CHECKING IF THE STUDENT WAS INSERTED INTO THE DATABASE
+    if ($add_student) {
+
+      // DELETING THAT ROW FROM ADMISSIONS TABLE
+      $deleted = mysqli_query($con, "DELETE FROM admissions WHERE id='$id'") or die(mysqli_error($con));
+
+      if (!$deleted) {
+        mysqli_rollback($con);
+      }
+
+      // ASSIGNING STUDENTS SUBJECTS.
+      if ($class == 'S1' || $class == 'S2' || $class == 'S3' || $class == 'S4') {
+        $result = mysqli_query($con, "INSERT INTO subject_offered(student, subject) VALUES('$student_no', 'ENGLISH'),
       ('$student_no', 'MATHEMATICS'),
       ('$student_no', 'CHEMISTRY'),
       ('$student_no', 'BIOLOGY'),
@@ -106,41 +162,35 @@ if(isset($_POST["approve"])){
       ('$student_no', 'HISTORY'),
       ('$student_no', 'GEOGRAPHY') ") or die(mysqli_errno($con));
 
-  // IF STUDENT IS IN ALEVEL
-    }elseif($class == 'S5' || $class == 'S6'){
-      $result = mysqli_query($con, "INSERT INTO subject_offered(student, subject) VALUES('$student_no', 'GP')") or die(mysqli_error($con));
+        // IF STUDENT IS IN ALEVEL
+      } elseif ($class == 'S5' || $class == 'S6') {
+        $result = mysqli_query($con, "INSERT INTO subject_offered(student, subject) VALUES('$student_no', 'GP')") or die(mysqli_error($con));
+      }
+
+      $success = "true";
+    } else {
+      echo mysqli_error($con);
+      mysqli_rollback($con);
+      $success = false;
     }
-
-    $success = "true";
-
-  }else{
-    echo mysqli_error($con);
-    mysqli_rollback($con);
-    $success = false;    
-  }
-
-
-  }catch(Exception $e){
+  } catch (Exception $e) {
     mysqli_rollback($con);
     $success = "false";
   }
-  
-  
 }
 
 
-if(isset($_POST["reject"])){
+if (isset($_POST["reject"])) {
   $id = htmlentities($_POST["id"], ENT_QUOTES, "UTF-8");
 
-   // DELETING THAT ROW FROM ADMISSIONS TABLE
-   $deleted = mysqli_query($con, "DELETE FROM admissions WHERE id='$id'") or die(mysqli_error($con));
+  // DELETING THAT ROW FROM ADMISSIONS TABLE
+  $deleted = mysqli_query($con, "DELETE FROM admissions WHERE id='$id'") or die(mysqli_error($con));
 
-   if(!$deleted){
-     mysqli_rollback($con);
-   }
+  if (!$deleted) {
+    mysqli_rollback($con);
+  }
 
-   $rejected = "true";
- 
+  $rejected = "true";
 }
 
 ?>
@@ -155,46 +205,46 @@ if(isset($_POST["reject"])){
   </div>
 
   <!-- Row -->
-  <div class="row"> 
+  <div class="row">
     <!-- DataTable with Hover -->
     <div class="col-lg-12">
       <div class="card mb-4">
- 
 
-            <!-- DISPLAYING THE SUCCESS MESSAGE -->
-        <?php if($success == "true") { ?>
-        <div class="container a-alert">
+
+        <!-- DISPLAYING THE SUCCESS MESSAGE -->
+        <?php if ($success == "true") { ?>
+          <div class="container a-alert">
             <div class="alert alert-success alert-dismissible fade show" role="alert">
-            <strong>SUCCESS!</strong> &nbsp; Admission Approved Successfully.
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <strong>SUCCESS!</strong> &nbsp; Admission Approved Successfully.
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
-            </button>
+              </button>
             </div>
-        </div>
+          </div>
 
-        <!-- ERROR MESSAGE -->
-        <?php } elseif($success == "false") { ?>
-            <div class="container a-alert">
+          <!-- ERROR MESSAGE -->
+        <?php } elseif ($success == "false") { ?>
+          <div class="container a-alert">
             <div class="alert alert-danger alert-dismissible fade show" role="alert">
-            <strong>ERROR!</strong> &nbsp; Something Went Wrong.........Please Try Again Later
-            <?php echo mysqli_error($con); ?>
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <strong>ERROR!</strong> &nbsp; Something Went Wrong.........Please Try Again Later
+              <?php echo mysqli_error($con); ?>
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
-            </button>
+              </button>
             </div>
-        </div>
+          </div>
         <?php } ?>
 
-            <!-- REJECTION MESSAGE -->
-            <?php if($rejected == "true") { ?>
-        <div class="container a-alert">
+        <!-- REJECTION MESSAGE -->
+        <?php if ($rejected == "true") { ?>
+          <div class="container a-alert">
             <div class="alert alert-warning alert-dismissible fade show" role="alert">
-            <strong>REJECTED!</strong> &nbsp; Admission Application has been rejected.
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <strong>REJECTED!</strong> &nbsp; Admission Application has been rejected.
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
-            </button>
+              </button>
             </div>
-        </div>
+          </div>
         <?php } ?>
 
 
@@ -222,55 +272,55 @@ if(isset($_POST["reject"])){
             </thead>
 
             <tbody>
-              <?php 
+              <?php
 
               $result = mysqli_query($con, "SELECT * FROM admissions");
-              while($row = mysqli_fetch_array($result)){
+              while ($row = mysqli_fetch_array($result)) {
               ?>
-              <tr>
-                <td> <?php echo $row["id"] ?> </td>
-                <td> <?php echo $row["first_name"] ?> </td>
-                <td> <?php echo $row["last_name"] ?> </td>
-                <td> <?php echo $row["class"] ?> </td>
-                <td> <?php echo $row["dob"] ?> </td>
-                <td> <?php echo $row["gender"] ?> </td>
-                <td> <?php echo $row["nationality"] ?> </td>
-                <td> <?php echo $row["home_district"] ?> </td>
-                <td> <?php echo $row["home_address"] ?> </td>
-                <td> <?php echo $row["religion"] ?> </td>
-                <td> <?php echo $row["parent_name"] ?> </td>
-                <td> <?php echo $row["parent_phone"] ?> </td>
-                <td> <?php echo $row["parent_email"] ?> </td>
-                <td> <?php echo $row["parent_occupation"] ?> </td>
-                <td> <?php echo $row["date_received"] ?> </td>
-                <!-- approved button -->
-                <td> 
-                  <div class="row">
-                    <!-- approve -->
-                    <div class="col-md-6 col-6">
-                      <form action="admissions.php" method="post">
-                        <input name="id" type="hidden" value="<?php echo $row["id"] ?>">
-                        <button class="btn btn-success" type="submit" name="approve">Approve</button>
+                <tr>
+                  <td> <?php echo $row["id"] ?> </td>
+                  <td> <?php echo $row["first_name"] ?> </td>
+                  <td> <?php echo $row["last_name"] ?> </td>
+                  <td> <?php echo $row["class"] ?> </td>
+                  <td> <?php echo $row["dob"] ?> </td>
+                  <td> <?php echo $row["gender"] ?> </td>
+                  <td> <?php echo $row["nationality"] ?> </td>
+                  <td> <?php echo $row["home_district"] ?> </td>
+                  <td> <?php echo $row["home_address"] ?> </td>
+                  <td> <?php echo $row["religion"] ?> </td>
+                  <td> <?php echo $row["parent_name"] ?> </td>
+                  <td> <?php echo $row["parent_phone"] ?> </td>
+                  <td> <?php echo $row["parent_email"] ?> </td>
+                  <td> <?php echo $row["parent_occupation"] ?> </td>
+                  <td> <?php echo $row["date_received"] ?> </td>
+                  <!-- approved button -->
+                  <td>
+                    <div class="row">
+                      <!-- approve -->
+                      <div class="col-md-6 col-6">
+                        <form action="assign_stream.php" method="post">
+                          <input name="id" type="hidden" value="<?php echo $row["id"] ?>">
+                          <button class="btn btn-success" type="submit" name="approve">Approve</button>
 
-                      </form>
-                      </a>
+                        </form>
+                        </a>
+                      </div>
+
+                      <!-- REJECT -->
+                      <div class="col-md-6 col-6 ml-3 mt-2">
+                        <form action="admissions.php" method="post">
+                          <input name="id" type="hidden" value="<?php echo $row["id"] ?>">
+                          <button class="btn btn-danger" type="submit" name="reject">Reject</button>
+
+                        </form>
+                        </a>
+                      </div>
+
                     </div>
 
-                    <!-- REJECT -->
-                    <div class="col-md-6 col-6 ml-3 mt-2">
-                      <form action="admissions.php" method="post">
-                        <input name="id" type="hidden" value="<?php echo $row["id"] ?>">
-                        <button class="btn btn-danger" type="submit" name="reject">Reject</button>
+                  </td>
 
-                      </form>
-                      </a>
-                    </div>
-
-                  </div>
-
-                </td>
-      
-              </tr>
+                </tr>
               <?php } ?>
 
             </tbody>
@@ -283,8 +333,7 @@ if(isset($_POST["reject"])){
   <!--Row-->
 
   <!-- Modal Logout -->
-  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabelLogout"
-    aria-hidden="true">
+  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabelLogout" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -310,9 +359,8 @@ if(isset($_POST["reject"])){
 
 <!-- MAKING THE TAB ACTIVE -->
 <script>
-    $("#admissions").addClass("active");
+  $("#admissions").addClass("active");
 </script>
 
 
 <?php include("footer.php") ?>
-

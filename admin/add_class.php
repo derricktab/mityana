@@ -76,8 +76,7 @@ if(isset($_POST["submit"])){
                         <i class="fa fa-building"></i>
                     </div>
                 </div>
-                <select name="stream" class="form-control">
-
+                <select name="stream" class="form-control" required>
                 <!-- FETCHING THE STREAMS FROM DATABASE -->
                     <?php 
                     $result = mysqli_query($con, "SELECT * FROM streams");

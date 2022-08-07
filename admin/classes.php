@@ -81,16 +81,6 @@ if(isset($_POST["delete"])){
 
                 <td> 
                   <div class="row">
-                    <!-- EDIT -->
-                    <div class="col-md-3 col-6">
-                      <form action="edit_class.php" method="post">
-                        <input name="id" type="hidden" value="<?php echo $class_id?>">
-                        <button class="btn btn-warning" type="submit" name="edit">Edit</button>
-
-                      </form>
-
-                    </div>
-
                     <!-- DELETE -->
                     <div class="col-md-3 col-6 ml-0 pl-0">
                         <button class="btn btn-danger open-modal" data-toggle="modal"  data-target="#deleteModal" data-id="<?php echo $class_id ?>" >Delete</button>
