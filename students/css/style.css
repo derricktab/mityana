@@ -44,7 +44,8 @@
 }
 
 .s-photo{
-    height: 150px;
+    height: 180px;
+    width: 180px;
     border-radius: 10px;
 }
 
@@ -63,7 +64,7 @@ a:hover{
 
 .student-pic img{
     width: 8.5rem !important;
-    height: 9rem !important;
+    height: 8.5rem !important;
     border: 2px solid orange;
     border-radius: 50%;
 }

@@ -44,7 +44,7 @@
 }
 
 .s-photo{
-    height: 150px;
+    height: 150px !important;
     border-radius: 10px;
 }
 

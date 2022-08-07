@@ -10,31 +10,36 @@ if (isset($_POST["approved"])) {
 
   try {
 
-    mysqli_begin_transaction($con);
-    mysqli_autocommit($con, false);
+    // mysqli_begin_transaction($con);
+    // mysqli_autocommit($con, false);
 
     // receiving data from 
     $id = htmlentities($_POST["id"], ENT_QUOTES, "UTF-8");
     $stream = htmlentities($_POST["stream"], ENT_QUOTES, "UTF-8");
 
     // SCRIPT FOR UPLOADING THE STUDENT IMAGE
-    $target_dir = "/uploads";
+    $target_dir = "uploads/";
 
-    
-    $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+
+    //Check if the directory already exists
+    if (!is_dir($target_dir)) {
+      //Create our directory if it does not exist
+      mkdir($target_dir);
+    }
+
+
+    $target_file = $target_dir . basename($_FILES["student_image"]["name"]);
     $uploadOk = 1;
     $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 
     // Check if image file is a actual image or fake image
-    if (isset($_POST["submit"])) {
-      $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
-      if ($check !== false) {
-        echo "File is an image - " . $check["mime"] . ".";
-        $uploadOk = 1;
-      } else {
-        echo "File is not an image.";
-        $uploadOk = 0;
-      }
+    $check = getimagesize($_FILES["student_image"]["tmp_name"]);
+    if ($check !== false) {
+      echo "File is an image - " . $check["mime"] . ".";
+      $uploadOk = 1;
+    } else {
+      echo "File is not an image.";
+      $uploadOk = 0;
     }
 
     // Check if file already exists
@@ -44,7 +49,7 @@ if (isset($_POST["approved"])) {
     }
 
     // Check file size
-    if ($_FILES["fileToUpload"]["size"] > 500000) {
+    if ($_FILES["student_image"]["size"] > 500000) {
       echo "Sorry, your file is too large.";
       $uploadOk = 0;
     }
@@ -63,12 +68,12 @@ if (isset($_POST["approved"])) {
       echo "Sorry, your file was not uploaded.";
       // if everything is ok, try to upload file
     } else {
-      if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-        echo "The file " . htmlspecialchars(basename($_FILES["fileToUpload"]["name"])) . " has been uploaded.";
+      if (move_uploaded_file($_FILES["student_image"]["tmp_name"], $target_file)) {
+        echo "The file " . htmlspecialchars(basename($_FILES["student_image"]["name"])) . " has been uploaded.";
       } else {
         echo "Sorry, there was an error uploading your file.";
       }
-    }
+    } // ! FINISHED FILE UPPLOAD ! //
 
 
     // getting the student data from the admissions table.
@@ -140,7 +145,7 @@ if (isset($_POST["approved"])) {
     $password = password_hash($student_no, PASSWORD_DEFAULT);
 
     // ADDING THE STUDENT TO THE DATABASE
-    $add_student = mysqli_query($con, "INSERT INTO students(student_id, first_name, last_name, class, dob, gender, nationality, home_district, home_address, religion, parent, date_admitted, username, password) VALUES('$student_no', '$first_name', '$last_name', '$class', '$dob', '$gender', '$nationality', '$home_district', '$home_address', '$religion', '$parent_no', NOW(), '$username', '$password')") or die(mysqli_error($con));
+    $add_student = mysqli_query($con, "INSERT INTO students(student_id, first_name, last_name, image, class, stream, dob, gender, nationality, home_district, home_address, religion, parent, date_admitted, username, password) VALUES('$student_no', '$first_name', '$last_name', '$target_file', '$class', '$stream', '$dob', '$gender', '$nationality', '$home_district', '$home_address', '$religion', '$parent_no', NOW(), '$username', '$password')") or die("MINE: ".mysqli_error($con));
 
     // CHECKING IF THE STUDENT WAS INSERTED INTO THE DATABASE
     if ($add_student) {

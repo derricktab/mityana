@@ -13,7 +13,7 @@ $result = mysqli_query($con, "SELECT * FROM marks_old WHERE student='$student_id
 <div class="row">
     <div class="table-responsive m-5">
         <table class="table">
-            <thead>
+            <thead class="thead-light">
                 <tr>
                     <th>NO.</th>
                     <th>SUBJECT</th>

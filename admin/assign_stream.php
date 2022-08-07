@@ -16,29 +16,6 @@ if (isset($_POST["approve"])) {
 <div class="form-wrapper mx-auto my-5">
     <h1 class="font-weight-bold text-center text-white">FINALIZING APPROVAL</h1>
 
-    <!-- DISPLAYING THE SUCCESS MESSAGE -->
-    <?php if ($success == "true") { ?>
-        <div class="container a-alert">
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                <strong>SUCCESS!</strong> &nbsp; Stream Updated Succesfully.
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-        </div>
-
-        <!-- ERROR MESSAGE -->
-    <?php } elseif ($success == "false") { ?>
-        <div class="container a-alert">
-            <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                <strong>ERROR!</strong> &nbsp; Something Went Wrong.........Please Try Again Later
-                <?php echo mysqli_error($con); ?>
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-        </div>
-    <?php } ?>
 
     <form action="admissions.php" method="POST" class="mt-4" enctype="multipart/form-data">
 

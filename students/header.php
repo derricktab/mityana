@@ -27,8 +27,8 @@ if(isset($_SESSION["student_username"]) && $_SESSION["student"] == "true"){
   $dob = $row["dob"];
   $gender = $row["gender"];
   $nationality = $row["nationality"];
-  // $stream = $row["stream"];
-  // $student_image = $row["image"];
+  $stream = $row["stream"];
+  $student_image = $row["image"];
   $home_district = $row["home_district"];
   $date_admitted = $row["date_admitted"];
   $religion = $row["religion"];
@@ -79,7 +79,7 @@ if(isset($_SESSION["student_username"]) && $_SESSION["student"] == "true"){
     <ul class="navbar-nav sidebar sidebar-light accordion" id="accordionSidebar">
       <a class="sidebar-brand align-items-center justify-content-center" href="index.php">
         <div class="student-pic rounded">
-          <img src="img/std.jpg">
+          <img src="../admin/<?php echo $student_image ?>">
         </div>
         <!-- DISPLAYING STUDENT NAME -->
         <div class="mx-3 mt-3 std-name font-weight-bold"><?php echo $firstname." ".$lastname ?> </div>

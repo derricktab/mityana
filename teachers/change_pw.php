@@ -107,10 +107,9 @@ if(isset($_POST["change_password"])){
         </div>
     </form>
     
-    <a href="index.php" class="text-white">Back To Home</a>
+    <a href="index.php" class="text-dark">Back To Home</a>
 
 </div>
-
 
 
 

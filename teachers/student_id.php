@@ -20,7 +20,7 @@ $expiry_date = $expiry_date->format('d-M-Y');
                <img src="../assets/logo1.png" alt="ID SCHOOL LOGO" class="id-logo">
 
                <!-- STUDENT PIC -->
-               <img src="img/std.jpg" alt="ID SCHOOL LOGO" class="std-img">
+               <img src="../admin/<?php echo $student_image ?> " alt="ID SCHOOL LOGO" class="std-img">
 
            </div>
 

@@ -1,6 +1,6 @@
 
 <div class="container-fluid mr-5 ">
-<h1>OLEVEL REPORT CARD</h1>
+<h1>A-LEVEL REPORT CARD</h1>
 
 <!-- REPORT CARD -->
 <div class="card report-card text-center mt-5 mb-5" id="report_card">
@@ -34,7 +34,7 @@
   <div class="row mt-4">
     <!-- student image -->
     <div class="col-md-3">
-      <img src="../admin/<?php echo $student_image ?>" alt="Placeholder" class="s-photo">
+      <img src="../assets/placeholder.jpg" alt="Placeholder" class="s-photo">
     </div>
 
     <?php

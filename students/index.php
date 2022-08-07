@@ -12,7 +12,7 @@
         </div>
 
         <div class="col-md-7 col-6">
-            <img src="../assets/bg.jpeg" alt="Image" class="right-image" />
+            <img src="../admin/<?php echo $student_image ?>" alt="Image" class="right-image" />
         </div>
     </div>
 

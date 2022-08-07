@@ -2,17 +2,20 @@
 include("../dbcon.php");
 session_start();
 
-$fullname = "";
-$email = "";
-$phonenumber = "";
-$address = "";
-$salary = "";
-$teacher_username = "";
+$firstname = "";
+$lastname = "";
+$student_id = "";
+$class = "";
+$dob = "";
+$gender = "";
+$nationality = "";
+$student_username = "";
+$student_image = "";
+$password = "";
 
+if(isset($_SESSION["student_username"]) && $_SESSION["student"] == "true"){
 
-if(isset($_SESSION["teacher_username"]) && $_SESSION["teacher"] == "true"){
-
-  $teacher_username = $_SESSION["teacher_username"];
+  $student_username = $_SESSION["student_username"];
 
   $result = mysqli_query($con, "SELECT * FROM students WHERE username='$student_username'") or die(mysqli_error($con));
   $row = mysqli_fetch_array($result);
@@ -30,6 +33,7 @@ if(isset($_SESSION["teacher_username"]) && $_SESSION["teacher"] == "true"){
   $date_admitted = $row["date_admitted"];
   $religion = $row["religion"];
   $parent_no = $row["parent"];
+  $password = $row["password"];
 
   // PARENT DETAILS
   $result = mysqli_query($con, "SELECT * FROM parents WHERE parent_no='$parent_no'");
@@ -75,7 +79,7 @@ if(isset($_SESSION["teacher_username"]) && $_SESSION["teacher"] == "true"){
     <ul class="navbar-nav sidebar sidebar-light accordion" id="accordionSidebar">
       <a class="sidebar-brand align-items-center justify-content-center" href="index.php">
         <div class="student-pic rounded">
-          <img src="img/std.jpg">
+          <img src="../admin/<?php echo $student_image ?>">
         </div>
         <!-- DISPLAYING STUDENT NAME -->
         <div class="mx-3 mt-3 std-name font-weight-bold"><?php echo $firstname." ".$lastname ?> </div>
@@ -117,7 +121,7 @@ if(isset($_SESSION["teacher_username"]) && $_SESSION["teacher"] == "true"){
       </li>
 
       <!-- REPORT CARD -->
-      <li class="nav-item" id="report">
+      <li class="nav-item" id="report_card">
         <a class="nav-link collapsed" href="report_card.php" 
           aria-expanded="true" aria-controls="collapseBootstrap">
           <i class="fa fa-address-card"></i>
@@ -143,7 +147,7 @@ if(isset($_SESSION["teacher_username"]) && $_SESSION["teacher"] == "true"){
         </a>
       </li>
 
-      <li class="nav-item" id="change_password">
+      <li class="nav-item" id="change_pw">
         <a class="nav-link" href="change_pw.php">
           <i class="fa fa-key"></i>
           <span>Change Password</span>
