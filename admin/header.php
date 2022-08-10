@@ -165,6 +165,13 @@ if (!isset($_SESSION["admin_username"])) {
         STAFF
       </div>
 
+      <!-- CURRENT YEAR -->
+      <li class="nav-item" id="teachers">
+        <a class="nav-link" href="teachers.php">
+          <i class="fas fa-fw fa-chart-area"></i>
+          <span>Teachers</span>
+        </a>
+      </li>
 
 
       <hr class="sidebar-divider">
