@@ -14,7 +14,7 @@
     <h2 class="pb-2">CO-CURRICULAR ACTIVITIES</h2>
     <div class="row">
         <div class="col-md-6">
-            <img src="assets/cactivities2.jpeg" alt="Co Curricular Activities" width="500" class="activities-img">
+            <img src="assets/activities.jpg" alt="Co Curricular Activities" width="500" class="activities-img">
         </div>
         <div class="col-md-6">
             <p>Co-curricular activities make school life enjoyable. Like the saying goes, all work without play makes John a dull boy. How would we know that our students are talented if we only judged them against academics! An opportunity is therefor given for the to participate in various activities outside class. They are each encouraged to belong to at least one club or society.
@@ -49,7 +49,7 @@ The School has a number of Clubs and Societies as described below with their cur
         </div>        
         
         <div class="col-md-6">
-            <img src="assets/club.jpg" alt="Co Curricular Activities" width="500" class="activities-img">
+            <img src="assets/cactivities2.jpeg" alt="Co Curricular Activities" width="500" class="activities-img">
         </div>
 
     </div>

@@ -13,42 +13,30 @@ $student_username = "";
 $student_image = "";
 $password = "";
 
-if(isset($_SESSION["student_username"]) && $_SESSION["student"] == "true"){
+$result = mysqli_query($con, "SELECT * FROM current_year");
+$row = mysqli_fetch_array($result);
 
-  $student_username = $_SESSION["student_username"];
+$current_year = $row["current_year"];
+$current_term = $row["current_term"];
 
-  $result = mysqli_query($con, "SELECT * FROM students WHERE username='$student_username'") or die(mysqli_error($con));
+
+if(isset($_SESSION["teacher_username"]) && $_SESSION["teacher"] == "true"){
+
+  $teacher_username = $_SESSION["teacher_username"];
+
+  $result = mysqli_query($con, "SELECT * FROM teachers WHERE username='$teacher_username'") or die(mysqli_error($con));
   $row = mysqli_fetch_array($result);
 
-  $firstname = $row["first_name"];
-  $lastname = $row["last_name"];
-  $student_id = $row["student_id"];
-  $class = $row["class"];
-  $dob = $row["dob"];
-  $gender = $row["gender"];
-  $nationality = $row["nationality"];
-  $stream = $row["stream"];
-  $student_image = $row["image"];
-  $home_district = $row["home_district"];
-  $date_admitted = $row["date_admitted"];
-  $religion = $row["religion"];
-  $parent_no = $row["parent"];
+  $fullname = $row["full_name"];
+  $teacher_id = $row["id"];
+  $email = $row["email"];
+  $phonenumber = $row["phonenumber"];
+  $address = $row["address"];
+  $salary = $row["salary"];
   $password = $row["password"];
 
-  // PARENT DETAILS
-  $result = mysqli_query($con, "SELECT * FROM parents WHERE parent_no='$parent_no'");
-  $row = mysqli_fetch_array($result);
-
-  $parent_name = $row["name"];
-  $parent_phone = $row["phone"];
-  $parent_email = $row["email"];
-  $parent_occupation = $row["occupation"];
-
-
-
 }else{
-
-  header("location: ../login.php");
+  header("location: ../401.php");
 
 }
   
@@ -64,7 +52,7 @@ if(isset($_SESSION["student_username"]) && $_SESSION["student"] == "true"){
   <meta name="description" content="">
   <meta name="author" content="">
   <link href="../assets/logo1.png" rel="icon">
-  <title>Student Dashboard - Mityana Standard SS</title>
+  <title>Teachers Dashboard - Mityana Standard SS</title>
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
   <link href="css/student.css" rel="stylesheet">
@@ -81,41 +69,27 @@ if(isset($_SESSION["student_username"]) && $_SESSION["student"] == "true"){
         <div class="student-pic rounded">
           <img src="../admin/<?php echo $student_image ?>">
         </div>
-        <!-- DISPLAYING STUDENT NAME -->
-        <div class="mx-3 mt-3 std-name font-weight-bold"><?php echo $firstname." ".$lastname ?> </div>
+        <!-- DISPLAYING THE TEACHER'S NAME NAME -->
+        <div class="mx-3 mt-3 std-name font-weight-bold"><?php echo $fullname?> </div>
         <!-- DISPLAYING STUDENT ID -->
-        <div class="mx-3 mt-1 std-id"><?php echo $student_id ?> </div>
+        <div class="mx-3 mt-1 std-id"><?php echo $teacher_id ?> </div>
       </a>
       <hr class="sidebar-divider my-0">
 
-      <!-- DASHBOARD
-      <li class="nav-item" id="dashboard">
-        <a class="nav-link" href="index.php">
-          <i class="fas fa-fw fa-tachometer-alt active"></i>
-          <span>Dashboard</span></a>
-      </li> -->
+
 
       <!-- <hr class="sidebar-divider"> -->
       <div class="sidebar-heading mt-5">
-        STUDENT
+        TEACHER
       </div>
 
-      <!-- PROFILE -->
-      <li class="nav-item" id="profile">
-        <a class="nav-link collapsed" href="profile.php" 
-          aria-expanded="true" aria-controls="collapseBootstrap">
-          <i class="fa fa-user-md"></i>
-          <span>Profile</span>
-        </a>
-
-      </li>
 
       <!-- SUBJECTS -->
       <li class="nav-item" id="subjects">
         <a class="nav-link collapsed" href="subjects.php" 
           aria-expanded="true" aria-controls="collapseBootstrap">
           <i class="fa fa-book"></i>
-          <span>Subjects</span>
+          <span>Subjects Taught</span>
         </a>
 
       </li>
@@ -132,21 +106,25 @@ if(isset($_SESSION["student_username"]) && $_SESSION["student"] == "true"){
      
       <!-- EXAM RESULTS -->
       <li class="nav-item" id="results">
-        <a class="nav-link collapsed" href="results.php" 
+        <a class="nav-link collapsed" href="marks.php" 
           aria-expanded="true" aria-controls="collapseBootstrap">
           <i class="far fa-fw fa-window-maximize"></i>
-          <span>Exam Results</span>
+          <span>Student Marks</span>
         </a>
       </li>
 
 
-      <li class="nav-item" id="id_card">
-        <a class="nav-link" href="student_id.php">
-          <i class="fa fa-id-badge"></i>
-          <span>ID Card</span>
+      <!-- PROFILE -->
+      <li class="nav-item" id="profile">
+        <a class="nav-link collapsed" href="profile.php" 
+          aria-expanded="true" aria-controls="collapseBootstrap">
+          <i class="fa fa-user-md"></i>
+          <span>Profile</span>
         </a>
+
       </li>
 
+      <!-- CHANGE PASSWORD -->
       <li class="nav-item" id="change_pw">
         <a class="nav-link" href="change_pw.php">
           <i class="fa fa-key"></i>

@@ -3,10 +3,10 @@ include("../dbcon.php");
 session_start();
 
 
-if(!isset($_SESSION["admin_username"])){
-    header("location: ../401.php");
+if (!isset($_SESSION["admin_username"])) {
+  header("location: ../401.php");
 }
-  
+
 ?>
 
 <!DOCTYPE html>
@@ -27,7 +27,8 @@ if(!isset($_SESSION["admin_username"])){
   <!-- <script src="js/html2canvas.js"></script> -->
   <link href="css/style.css" rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js">
-</script><script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
 
 </head>
 
@@ -54,26 +55,23 @@ if(!isset($_SESSION["admin_username"])){
 
       <!-- ADMISSIONS -->
       <li class="nav-item" id="admissions">
-        <a class="nav-link collapsed" href="admissions.php" 
-          aria-expanded="true" aria-controls="collapseBootstrap">
+        <a class="nav-link collapsed" href="admissions.php" aria-expanded="true" aria-controls="collapseBootstrap">
           <i class="far fa-fw fa-window-maximize"></i>
           <span>Admissions</span>
         </a>
 
       </li>
-     
+
       <!-- Subjects -->
       <li class="nav-item" id="subjects">
-        <a class="nav-link collapsed" href="subjects.php" 
-          aria-expanded="true" aria-controls="collapseBootstrap">
+        <a class="nav-link collapsed" href="subjects.php" aria-expanded="true" aria-controls="collapseBootstrap">
           <i class="fa fa-fw fa-book"></i>
           <span>Subjects</span>
         </a>
-     
-      <!-- STUDENTS -->
+
+        <!-- STUDENTS -->
       <li class="nav-item" id="students">
-        <a class="nav-link collapsed" href="students.php" 
-          aria-expanded="true" aria-controls="collapseBootstrap">
+        <a class="nav-link collapsed" href="students.php" aria-expanded="true" aria-controls="collapseBootstrap">
           <i class="fa fa-fw fa-users"></i>
           <span>Students</span>
         </a>
@@ -98,8 +96,7 @@ if(!isset($_SESSION["admin_username"])){
 
       <!-- Report Cards -->
       <li class="nav-item" id="report_cards">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#reportCollapse" aria-expanded="true"
-          aria-controls="collapseForm">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#reportCollapse" aria-expanded="true" aria-controls="collapseForm">
           <i class="fab fa-fw fa-wpforms"></i>
           <span>Report Cards</span>
         </a>
@@ -123,8 +120,7 @@ if(!isset($_SESSION["admin_username"])){
 
       <!-- Exam results -->
       <li class="nav-item" id="exam_results">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#resultsCollapse" aria-expanded="true"
-          aria-controls="collapseForm">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#resultsCollapse" aria-expanded="true" aria-controls="collapseForm">
           <i class="fa fa-fw fa-server"></i>
           <span>Exam Results</span>
         </a>
@@ -145,7 +141,7 @@ if(!isset($_SESSION["admin_username"])){
         </div>
 
       </li>
-      
+
 
       <!-- STUDENT ID CARDS -->
       <li class="nav-item" id="id_cards">
@@ -168,21 +164,23 @@ if(!isset($_SESSION["admin_username"])){
       <div class="sidebar-heading">
         STAFF
       </div>
-   
-      <!-- TEACHERS -->
+
+
+
+      <hr class="sidebar-divider">
+
+      <!-- CURRENT YEAR -->
       <li class="nav-item" id="teachers">
-        <a class="nav-link" href="teachers.php">
+        <a class="nav-link" href="current_term.php">
           <i class="fas fa-fw fa-chart-area"></i>
-          <span>Teachers</span>
+          <span>Current Term</span>
         </a>
       </li>
-  
-      <hr class="sidebar-divider">
     </ul>
     <!-- Sidebar -->
 
 
-    
+
     <div id="content-wrapper" class="d-flex flex-column">
       <div id="content">
         <!-- TopBar -->
@@ -192,22 +190,19 @@ if(!isset($_SESSION["admin_username"])){
           </button>
 
           <!-- home button -->
-          <a href="../index.php" class="text-white">          
+          <a href="../index.php" class="text-white">
             <i class="fa fa-home"></i>
           </a>
           <h4 class="text-white mx-auto font-weight-bold my-auto mityana-title">MITYANA STANDARD SS - KAGAVU</h4>
           <ul class="navbar-nav ml-auto">
             <li class="nav-item dropdown no-arrow">
-              <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false">
+              <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="fas fa-search fa-fw"></i>
               </a>
-              <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
-                aria-labelledby="searchDropdown">
+              <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
                 <form class="navbar-search">
                   <div class="input-group">
-                    <input type="text" class="form-control bg-light border-1 small" placeholder="What do you want to look for?"
-                      aria-label="Search" aria-describedby="basic-addon2" style="border-color: #3f51b5;">
+                    <input type="text" class="form-control bg-light border-1 small" placeholder="What do you want to look for?" aria-label="Search" aria-describedby="basic-addon2" style="border-color: #3f51b5;">
                     <div class="input-group-append">
                       <button class="btn btn-primary" type="button">
                         <i class="fas fa-search fa-sm"></i>
@@ -220,8 +215,7 @@ if(!isset($_SESSION["admin_username"])){
 
             <div class="topbar-divider d-none d-sm-block"></div>
             <li class="nav-item dropdown no-arrow">
-              <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false">
+              <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <img class="img-profile rounded-circle" src="img/boy.png" style="max-width: 60px">
                 <span class="ml-2 d-none d-lg-inline text-white small"><?php echo $_SESSION["admin_username"]; ?></span>
               </a>
@@ -234,24 +228,21 @@ if(!isset($_SESSION["admin_username"])){
                   <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
                   Settings
                 </a>
-        
+
                 <div class="dropdown-divider"></div>
-            
+
               </div>
             </li>
 
             <li class="nav-item dropdown no-arrow">
-                
-              <a class="nav-link dropdown-toggle" href="#" data-toggle="modal"  data-target="#logoutModal"
-                aria-haspopup="true" aria-expanded="false">
+
+              <a class="nav-link dropdown-toggle" href="#" data-toggle="modal" data-target="#logoutModal" aria-haspopup="true" aria-expanded="false">
                 <i class="fas fa-power-off fa-fw"></i>
               </a>
-              <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
-                aria-labelledby="searchDropdown">
+              <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
                 <form class="navbar-search">
                   <div class="input-group">
-                    <input type="text" class="form-control bg-light border-1 small" placeholder="What do you want to look for?"
-                      aria-label="Search" aria-describedby="basic-addon2" style="border-color: #3f51b5;">
+                    <input type="text" class="form-control bg-light border-1 small" placeholder="What do you want to look for?" aria-label="Search" aria-describedby="basic-addon2" style="border-color: #3f51b5;">
                     <div class="input-group-append">
                       <button class="btn btn-primary" type="button">
                         <i class="fas fa-search fa-sm"></i>
@@ -261,31 +252,30 @@ if(!isset($_SESSION["admin_username"])){
                 </form>
               </div>
             </li>
-            
+
           </ul>
         </nav>
 
         <!-- Topbar -->
 
 
-    <!-- Modal Logout -->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabelLogout"
-      aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabelLogout">Ohh No!</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <p>Are you sure you want to logout?</p>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cancel</button>
-            <a href="logout.php" class="btn btn-primary">Logout</a>
+        <!-- Modal Logout -->
+        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabelLogout" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabelLogout">Ohh No!</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <p>Are you sure you want to logout?</p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cancel</button>
+                <a href="logout.php" class="btn btn-primary">Logout</a>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
