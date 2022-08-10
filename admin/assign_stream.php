@@ -36,8 +36,8 @@ if (isset($_POST["approve"])) {
                         <i class="fa fa-building"></i>
                     </div>
                 </div>
-                <select name="stream" class="form-control">
-                    <option>Select Stream</option>
+                <select name="stream" class="form-control" required>
+                    <option disabled selected> -- Select Stream -- </option>
                     <?php
                     $result = mysqli_query($con, "SELECT * FROM streams");
                     if ($result) {

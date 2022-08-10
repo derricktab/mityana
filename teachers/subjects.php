@@ -27,18 +27,25 @@
               <tr>
                 <th>ID</th>
                 <th>Subject Name</th>
+                <th>No Of Students</th>
               </tr>
             </thead>
 
             <tbody>
               <?php 
 
-              $result = mysqli_query($con, "SELECT * FROM subject_offered WHERE student='$student_id'");
+              $result = mysqli_query($con, "SELECT * FROM teacher_subject WHERE teacher='$teacher_username'");
               while($row = mysqli_fetch_array($result)){
+                $subject = $row["subject"];
+
+                $result1 = mysqli_query($con, "SELECT * FROM subject_offered WHERE subject = '$subject'");
+
+                $no_of_students = mysqli_num_rows($result1);
               ?>
               <tr>
                 <td> <?php echo $row["id"] ?> </td>
                 <td> <?php echo $row["subject"] ?> </td>
+                <td> <?php echo $no_of_students ?> </td>
 
               </tr>
               <?php } ?>

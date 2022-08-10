@@ -597,7 +597,7 @@ a:focus {
 }
 
 .bg-navbar {
-  background-image: linear-gradient(to bottom right, #6777ef, #323fa2);
+  background-image: linear-gradient(to bottom right, #9d5004, #5c2f03);
 }
 
 .sidebar {
@@ -762,8 +762,8 @@ a:focus {
   text-align: center;
   letter-spacing: .05rem;
   z-index: 1;
-  background-color: blue; /* For browsers that do not support gradients */
-  background-image: linear-gradient(to bottom right, #6777ef, #3f51b5, #1e297e);
+  background-color: rgb(55, 255, 0); /* For browsers that do not support gradients */
+  background-image: linear-gradient(to bottom right, #964B00,  #6d3904, #492502);
 }
 
 .sidebar .sidebar-brand .sidebar-brand-icon img {

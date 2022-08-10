@@ -67,7 +67,7 @@ if(isset($_SESSION["teacher_username"]) && $_SESSION["teacher"] == "true"){
     <ul class="navbar-nav sidebar sidebar-light accordion" id="accordionSidebar">
       <a class="sidebar-brand align-items-center justify-content-center" href="index.php">
         <div class="student-pic rounded">
-          <img src="../admin/<?php echo $student_image ?>">
+          <img src="../assets/placeholder.jpg">
         </div>
         <!-- DISPLAYING THE TEACHER'S NAME NAME -->
         <div class="mx-3 mt-3 std-name font-weight-bold"><?php echo $fullname?> </div>
@@ -83,7 +83,16 @@ if(isset($_SESSION["teacher_username"]) && $_SESSION["teacher"] == "true"){
         TEACHER
       </div>
 
+      <!-- DASHBOARD -->
+      <li class="nav-item" id="profile">
+        <a class="nav-link collapsed" href="index.php" 
+          aria-expanded="true" aria-controls="collapseBootstrap">
+          <i class="fa fa-user-md"></i>
+          <span>Dashboard</span>
+        </a>
 
+      </li>
+      
       <!-- SUBJECTS -->
       <li class="nav-item" id="subjects">
         <a class="nav-link collapsed" href="subjects.php" 
@@ -94,6 +103,17 @@ if(isset($_SESSION["teacher_username"]) && $_SESSION["teacher"] == "true"){
 
       </li>
 
+     
+      <!-- STUDENT MARKS -->
+      <li class="nav-item" id="marks">
+        <a class="nav-link collapsed" href="marks.php" 
+          aria-expanded="true" aria-controls="collapseBootstrap">
+          <i class="far fa-fw fa-window-maximize"></i>
+          <span>Student Marks</span>
+        </a>
+      </li>
+
+
       <!-- REPORT CARD -->
       <li class="nav-item" id="report_card">
         <a class="nav-link collapsed" href="report_card.php" 
@@ -103,26 +123,7 @@ if(isset($_SESSION["teacher_username"]) && $_SESSION["teacher"] == "true"){
         </a>
 
       </li>
-     
-      <!-- EXAM RESULTS -->
-      <li class="nav-item" id="results">
-        <a class="nav-link collapsed" href="marks.php" 
-          aria-expanded="true" aria-controls="collapseBootstrap">
-          <i class="far fa-fw fa-window-maximize"></i>
-          <span>Student Marks</span>
-        </a>
-      </li>
 
-
-      <!-- PROFILE -->
-      <li class="nav-item" id="profile">
-        <a class="nav-link collapsed" href="profile.php" 
-          aria-expanded="true" aria-controls="collapseBootstrap">
-          <i class="fa fa-user-md"></i>
-          <span>Profile</span>
-        </a>
-
-      </li>
 
       <!-- CHANGE PASSWORD -->
       <li class="nav-item" id="change_pw">

@@ -65,7 +65,7 @@ a:hover{
 .student-pic img{
     width: 8.5rem !important;
     height: 8.5rem !important;
-    border: 2px solid orange;
+    border: 2px solid white;
     border-radius: 50%;
 }
 
@@ -191,4 +191,8 @@ a:hover{
 .pw-form-wrapper{
     margin-left: 150px !important;
     margin-right: 150px !important;
+}
+
+td input{
+    height: 32px !important;
 }
