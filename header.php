@@ -111,7 +111,7 @@ session_start();
             <button class="btn btn-outline-info" id="login">Dashboard </button></a>
         <?php } elseif(isset($_SESSION["teacher_username"])){ ?>
 
-        <a href="login.php" class="text-white">  
+          <a href="teachers/" class="text-white"> 
             <button class="btn btn-outline-info" id="login">Dashboard </button></a>
         <?php }  else{ ?>
         <a href="login.php" class="text-white">  
