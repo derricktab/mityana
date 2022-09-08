@@ -9,6 +9,7 @@ if (isset($_POST["submit"])) {
     $first_name = htmlentities($_POST["fname"], ENT_QUOTES, "UTF-8");
     $last_name = htmlentities($_POST["lname"], ENT_QUOTES, "UTF-8");
     $class = htmlentities($_POST["class"], ENT_QUOTES, "UTF-8");
+    $combination = htmlentities($_POST["combination"], ENT_QUOTES, "UTF-8");
     $dob = htmlentities($_POST["dob"], ENT_QUOTES, "UTF-8");
     $gender = htmlentities($_POST["gender"], ENT_QUOTES, "UTF-8");
     $nationality = htmlentities($_POST["nationality"], ENT_QUOTES, "UTF-8");
@@ -22,7 +23,7 @@ if (isset($_POST["submit"])) {
     $pschool = htmlentities($_POST["pschool"], ENT_QUOTES, "UTF-8");
     $pgrade = htmlentities($_POST["pgrade"], ENT_QUOTES, "UTF-8");
 
-    $result = mysqli_query($con, "INSERT INTO admissions(first_name, last_name,	class,	pschool, pgrade, dob, gender, nationality, home_district, home_address, religion, parent_name, parent_phone, parent_occupation, parent_email, date_received) VALUES('$first_name', '$last_name', '$class', '$pschool', '$pgrade', '$dob', '$gender', '$nationality', '$home_district', '$home_address', '$religion', '$parent_name', '$parent_phone', '$parent_occupation', '$parent_email', NOW())") or die(mysqli_error($con));
+    $result = mysqli_query($con, "INSERT INTO admissions(first_name, last_name,	class, combination,	pschool, pgrade, dob, gender, nationality, home_district, home_address, religion, parent_name, parent_phone, parent_occupation, parent_email, date_received) VALUES('$first_name', '$last_name', '$class', '$combination', '$pschool', '$pgrade', '$dob', '$gender', '$nationality', '$home_district', '$home_address', '$religion', '$parent_name', '$parent_phone', '$parent_occupation', '$parent_email', NOW())") or die(mysqli_error($con));
 
     if ($result) {
         $success = "true";
@@ -291,9 +292,11 @@ if (isset($_POST["submit"])) {
 
 
     // Checking which class was selected
-    $("#admission").on("change", function() {
+    $("#class").on("change", function() {
         $("#combination").empty();
-        var myclass = this.class.value;
+
+        // Getting the selected value
+        var myclass = this.value;
 
         if (myclass == "S5" | myclass == "S6") {
             console.log("A LEVEL STUDENT");
