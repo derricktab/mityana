@@ -81,6 +81,7 @@ if (isset($_POST["approved"])) {
     $first_name = $admission_details["first_name"];
     $last_name = $admission_details["last_name"];
     $class = $admission_details["class"];
+    $combination = $admission_details["combination"];
     $dob = $admission_details["dob"];
     $gender = $admission_details["gender"];
     $nationality = $admission_details["nationality"];
@@ -138,7 +139,7 @@ if (isset($_POST["approved"])) {
     $password = password_hash($student_no, PASSWORD_DEFAULT);
 
     // ADDING THE STUDENT TO THE DATABASE
-    $add_student = mysqli_query($con, "INSERT INTO students(student_id, first_name, last_name, image, class, stream, dob, gender, nationality, home_district, home_address, religion, parent, date_admitted, username, password) VALUES('$student_no', '$first_name', '$last_name', '$target_file', '$class', '$stream', '$dob', '$gender', '$nationality', '$home_district', '$home_address', '$religion', '$parent_no', NOW(), '$username', '$password')") or die("MINE: ".mysqli_error($con));
+    $add_student = mysqli_query($con, "INSERT INTO students(student_id, first_name, last_name, image, class, stream, combination, dob, gender, nationality, home_district, home_address, religion, parent, date_admitted, username, password) VALUES('$student_no', '$first_name', '$last_name', '$target_file', '$class', '$stream', '$combination', '$dob', '$gender', '$nationality', '$home_district', '$home_address', '$religion', '$parent_no', NOW(), '$username', '$password')") or die("MINE: ".mysqli_error($con));
 
     // CHECKING IF THE STUDENT WAS INSERTED INTO THE DATABASE
     if ($add_student) {
@@ -254,6 +255,7 @@ if (isset($_POST["reject"])) {
                 <th>First Name</th>
                 <th>Last Name</th>
                 <th>Class</th>
+                <th>Combination</th>
                 <th>DOB</th>
                 <th>Gender</th>
                 <th>Nationality</th>
@@ -280,6 +282,7 @@ if (isset($_POST["reject"])) {
                   <td> <?php echo $row["first_name"] ?> </td>
                   <td> <?php echo $row["last_name"] ?> </td>
                   <td> <?php echo $row["class"] ?> </td>
+                  <td> <?php echo $row["combination"] ?> </td>
                   <td> <?php echo $row["dob"] ?> </td>
                   <td> <?php echo $row["gender"] ?> </td>
                   <td> <?php echo $row["nationality"] ?> </td>
