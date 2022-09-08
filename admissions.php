@@ -24,9 +24,9 @@ if (isset($_POST["submit"])) {
 
     $result = mysqli_query($con, "INSERT INTO admissions(first_name, last_name,	class,	pschool, pgrade, dob, gender, nationality, home_district, home_address, religion, parent_name, parent_phone, parent_occupation, parent_email, date_received) VALUES('$first_name', '$last_name', '$class', '$pschool', '$pgrade', '$dob', '$gender', '$nationality', '$home_district', '$home_address', '$religion', '$parent_name', '$parent_phone', '$parent_occupation', '$parent_email', NOW())") or die(mysqli_error($con));
 
-    if($result){
+    if ($result) {
         $success = "true";
-    }else{
+    } else {
         $success = "false";
     }
 }
@@ -52,30 +52,30 @@ if (isset($_POST["submit"])) {
     <h1 class="font-weight-bold text-center student-reg">JOIN MITYANA STANDARD SS - KAGAVU</h1>
 
     <!-- DISPLAYING THE SUCCESS MESSAGE -->
-    <?php if($success == "true") { ?>
-    <div class="container a-alert">
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
-        <strong>SUCCESS!</strong> &nbsp; Admission Request Sent, We Shall Contact You Once Your Admission Has Been Approved.
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-        </div>
-    </div>
-
-    <!-- ERROR MESSAGE -->
-    <?php } elseif($success == "false") { ?>
+    <?php if ($success == "true") { ?>
         <div class="container a-alert">
-        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-        <strong>ERROR!</strong> &nbsp; Something Went Wrong.........Please Try Again Later
-        <?php echo mysqli_error($con); ?>
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong>SUCCESS!</strong> &nbsp; Admission Request Sent, We Shall Contact You Once Your Admission Has Been Approved.
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
         </div>
-    </div>
+
+        <!-- ERROR MESSAGE -->
+    <?php } elseif ($success == "false") { ?>
+        <div class="container a-alert">
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <strong>ERROR!</strong> &nbsp; Something Went Wrong.........Please Try Again Later
+                <?php echo mysqli_error($con); ?>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        </div>
     <?php } ?>
 
-    <form action="admissions.php" method="POST">
+    <form action="admissions.php" method="POST" id="admission">
 
         <div class="form-group mt-5">
             <div class="form-row">
@@ -115,7 +115,7 @@ if (isset($_POST["submit"])) {
                         <i class="fas fa-chalkboard-teacher"></i>
                     </div>
                 </div>
-                <select name="class" class="custom-select" required>
+                <select name="class" class="custom-select" id="class" required>
                     <option value="" disabled selected hidden>Class</option>
                     <option value="S1">S1</option>
                     <option value="S2">S2</option>
@@ -127,6 +127,13 @@ if (isset($_POST["submit"])) {
             </div>
         </div>
 
+
+        <!-- STUDENT COMBINATION / SUBJECTS -->
+        <div class="form-group">
+            <div class="input-group" id="combination">
+
+            </div>
+        </div>
 
         <!-- PREVIOUS SCHOOL -->
         <div class="form-group">
@@ -281,6 +288,19 @@ if (isset($_POST["submit"])) {
 <script>
     $("#admissions").removeClass("btn-outline-warning");
     $("#admissions").addClass("btn-warning");
+
+
+    // Checking which class was selected
+    $("#admission").on("change", function() {
+        $("#combination").empty();
+        var myclass = this.class.value;
+
+        if (myclass == "S5" | myclass == "S6") {
+            console.log("A LEVEL STUDENT");
+            $("#combination").append('<div class="input-group-prepend">                    <div class="input-group-text">                    <i class="fas fa-book"></i>                    </div>                </div>                <input type="text" name="combination" class="form-control" placeholder="Combination eg. PEM/ICT, HEG/SUB-MATH" required>');
+
+        }
+    });
 </script>
 
 <script>
