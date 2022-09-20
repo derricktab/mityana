@@ -176,7 +176,7 @@
     </div>
   </div>
 
-  <button onclick="getPDF()" class="btn btn-success mt-2 mb-5">PRINT REPORT</button>
+  <button onclick="printPdf()" class="btn btn-success mt-2 mb-5">PRINT REPORT</button>
 
 </div>
 
@@ -209,20 +209,26 @@
   }
 
   function printPdf() {
-    var doc = new jsPDF();
+    // Choose the element that our invoice is rendered in.
+    const reportCard = document.getElementById('report_card');
+				// Choose the element and save the PDF for our user.
+				html2pdf().set({ html2canvas: { scale: 4 } })
+.from(reportCard).save();
 
-    var canvas = document.getElementById("report_card");
-    rasterizeHTML.drawHTML('Some ' +
-      '<span style="color: green; font-size: 20px;">HTML</span>' +
-      ' with an image <img src="someimg.png">',
-      canvas);
+    // var doc = new jsPDF();
 
-    doc.text(20, 20, 'Hello world!');
-    doc.text(20, 30, 'This is client-side Javascript, pumping out a PDF.');
-    doc.addPage();
-    doc.text(20, 20, 'Do you like that?');
+    // var canvas = document.getElementById("report_card");
+    // rasterizeHTML.drawHTML('Some ' +
+    //   '<span style="color: green; font-size: 20px;">HTML</span>' +
+    //   ' with an image <img src="someimg.png">',
+    //   canvas);
 
-    doc.save('Test.pdf');
+    // doc.text(20, 20, 'Hello world!');
+    // doc.text(20, 30, 'This is client-side Javascript, pumping out a PDF.');
+    // doc.addPage();
+    // doc.text(20, 20, 'Do you like that?');
+
+    // doc.save('Test.pdf');
   }
 </script>
 

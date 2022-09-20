@@ -26,6 +26,7 @@
             <thead class="thead-light">
               <tr>
                 <th>ID</th>
+                <th>Class</th>
                 <th>Subject Name</th>
                 <th>No Of Students</th>
               </tr>
@@ -44,6 +45,7 @@
               ?>
               <tr>
                 <td> <?php echo $row["id"] ?> </td>
+                <td> <?php echo $row["class"] ?> </td>
                 <td> <?php echo $row["subject"] ?> </td>
                 <td> <?php echo $no_of_students ?> </td>
 
