@@ -25,9 +25,10 @@
     $result = mysqli_query($con, "SELECT * FROM teacher_subject WHERE teacher='$teacher_username'");
     while ($row = mysqli_fetch_array($result)) {
         $subject = $row["subject"];
+        $class = $row["class"];
 
     ?>
-    <a href="enter_marks.php?s=<?php echo $subject ?>" class="btn btn-info"><?php echo $subject ?> </a>
+    <a href="enter_marks.php?s=<?php echo $subject?>" class="btn btn-info"><?php echo $subject." - ".$class ?> </a>
 
     <?php } ?>
 

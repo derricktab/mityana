@@ -132,7 +132,7 @@ if(isset($_POST["submit"])){
         </div>
     </form>
 
-    <a href="subjects.php" class="text-white">Back To Teachers</a>
+    <a href="teachers.php" class="text-white">Back To Teachers</a>
 </div>
 
 

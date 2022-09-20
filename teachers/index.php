@@ -13,12 +13,13 @@
                     $result = mysqli_query($con, "SELECT * FROM teacher_subject WHERE teacher='$teacher_username'");
                     while ($row = mysqli_fetch_array($result)) {
                         $subject = $row["subject"];
+                        $class = $row["class"];
 
                         $result1 = mysqli_query($con, "SELECT * FROM subject_offered WHERE subject = '$subject'");
 
                         $no_of_students = mysqli_num_rows($result1);
                     ?>
-                    <li class="list-group-item"><?php echo $subject ?> </li>
+                    <li class="list-group-item"><?php echo $subject." - ".$class ?> </li>
 
                     <?php } ?>
 
