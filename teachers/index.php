@@ -3,7 +3,6 @@
 <div class="container-fluid m-5">
 
     <div class="row mt-5">
-
         <div class="col-md-4">
             <h5 class="font-weight-bold text-primary mb-4">Subjects Taught</h5>
             <div class="card" style="width: 18rem;">
