@@ -267,6 +267,7 @@ if (isset($_POST["reject"])) {
                 <th>Parent Phone</th>
                 <th>Parent Email</th>
                 <th>Date Received</th>
+                <th>Recommendation</th>
                 <th>Action</th>
               </tr>
             </thead>
@@ -294,6 +295,7 @@ if (isset($_POST["reject"])) {
                   <td> <?php echo $row["parent_email"] ?> </td>
                   <td> <?php echo $row["parent_occupation"] ?> </td>
                   <td> <?php echo $row["date_received"] ?> </td>
+                  <td> <?php echo $row["recommendation"] ?> </td>
                   <!-- approved button -->
                   <td>
                     <div class="row">

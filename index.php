@@ -1,54 +1,80 @@
 <?php include("header.php"); ?>
 <title>Mityana Standard SS - Kagavu</title>
+<style>
+  .caption{
+    position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background-color: rgba(0, 0, 0, 0.5);
+      padding-bottom: 100px;
+      border-top-left-radius: 60px;
+      border-top-right-radius: 60px;
+  }
 
+  .carousel-item {
+    width: 100% !important;
+      height: 650px;
+      background-size: cover;
+      /* background-position: center; */
+    }
+
+    .carousel-inner{
+      width: 100% !important;
+    }
+    
+    @media(max-width: 720px) {
+      .carousel-inner{
+      height: 400px !important;
+    }
+}
+    
+  
+
+</style>
 <!-- CAROUSEL -->
-<div class="home-slider">
-  <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+<div id="myCarousel" class="carousel slide" data-ride="carousel">
+
     <ol class="carousel-indicators">
-      <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
-      <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
-      <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+      <li data-target="#myCarousel" data-slide-to="2"></li>
     </ol>
+
     <div class="carousel-inner">
       <div class="carousel-item active">
-        <img src="assets/bg3.jpeg" class="d-block w-100" alt="...">
-        <div class="carousel-caption d-none d-md-block">
-          <h5>Our Students</h5>
-          <p>Our Students</p>
+        <img src="assets\new_pics\WhatsApp Image 2022-10-31 at 12.46.00 AM (2).jpeg" alt="" srcset="">
+        <div class="carousel-caption caption">
+          <h2>ADMISSIONS OPEN FOR TERM 1 2023</h2><br>
+          <button class="btn btn-success"><a href="admissions.php"> APPLY NOW</a></button>
         </div>
       </div>
       <div class="carousel-item">
-        <img src="assets/bg.jpeg" class="d-block w-100" alt="...">
-        <div class="carousel-caption d-none d-md-block">
-          <h5>Second slide label</h5>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      <img src="assets\new_pics\WhatsApp Image 2022-10-31 at 12.46.00 AM (2).jpeg" alt="" srcset="">
+
+        <div class="carousel-caption caption">
+          <h3>Image 2</h3>
+          <p>Image 2 description</p>
         </div>
       </div>
       <div class="carousel-item">
-        <img src="assets/bg1.jpeg" class="d-block w-100" alt="...">
-        <div class="carousel-caption d-none d-md-block">
-          <h5>Third slide label</h5>
-          <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-        </div>
-      </div>
-      <div class="carousel-item">
-        <img src="assets/bg5.jpeg" class="d-block w-100" alt="...">
-        <div class="carousel-caption d-none d-md-block">
-          <h5>Third slide label</h5>
-          <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+      <img src="assets\new_pics\WhatsApp Image 2022-10-31 at 12.46.00 AM (2).jpeg" alt="" srcset="">
+
+        <div class="carousel-caption caption">
+          <h3>Image 3</h3>
+          <p>Image 3 description</p>
         </div>
       </div>
     </div>
-    <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+    <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
       <span class="sr-only">Previous</span>
     </a>
-    <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+    <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
       <span class="carousel-control-next-icon" aria-hidden="true"></span>
       <span class="sr-only">Next</span>
     </a>
   </div>
-</div>
 <!-- !END CAROUSEL -->
 
 

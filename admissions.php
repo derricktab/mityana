@@ -5,11 +5,16 @@
 $success = "";
 
 if (isset($_POST["submit"])) {
+    $combination = "";
 
     $first_name = htmlentities($_POST["fname"], ENT_QUOTES, "UTF-8");
     $last_name = htmlentities($_POST["lname"], ENT_QUOTES, "UTF-8");
     $class = htmlentities($_POST["class"], ENT_QUOTES, "UTF-8");
-    $combination = htmlentities($_POST["combination"], ENT_QUOTES, "UTF-8");
+
+    // GETTING THE COMBINATION ONLY IF THE STUDENT IS IN A-LEVEL
+    if ($class == "S5" || $class == "S6") {
+        $combination = htmlentities($_POST["combination"], ENT_QUOTES, "UTF-8");
+    }
     $dob = htmlentities($_POST["dob"], ENT_QUOTES, "UTF-8");
     $gender = htmlentities($_POST["gender"], ENT_QUOTES, "UTF-8");
     $nationality = htmlentities($_POST["nationality"], ENT_QUOTES, "UTF-8");
@@ -23,7 +28,47 @@ if (isset($_POST["submit"])) {
     $pschool = htmlentities($_POST["pschool"], ENT_QUOTES, "UTF-8");
     $pgrade = htmlentities($_POST["pgrade"], ENT_QUOTES, "UTF-8");
 
-    $result = mysqli_query($con, "INSERT INTO admissions(first_name, last_name,	class, combination,	pschool, pgrade, dob, gender, nationality, home_district, home_address, religion, parent_name, parent_phone, parent_occupation, parent_email, date_received) VALUES('$first_name', '$last_name', '$class', '$combination', '$pschool', '$pgrade', '$dob', '$gender', '$nationality', '$home_district', '$home_address', '$religion', '$parent_name', '$parent_phone', '$parent_occupation', '$parent_email', NOW())") or die(mysqli_error($con));
+
+    if (isset($_FILES['recommendation'])) {
+        $file = $_FILES['recommendation'];
+
+        // File properties
+        $file_name = $file['name'];
+        $file_tmp = $file['tmp_name'];
+        $file_size = $file['size'];
+        $file_error = $file['error'];
+
+        // Work out the file extension
+        $file_ext = explode('.', $file_name);
+        $file_ext = strtolower(end($file_ext));
+
+        $allowed = array('pdf', 'doc', 'docx', 'png', 'jpg', "jpeg");
+
+
+        $folder = "uploads";
+
+        if (!is_dir($folder)) {
+            mkdir($folder, 0777, true);
+        }
+
+        if (in_array($file_ext, $allowed)) {
+            if ($file_error === 0) {
+                if ($file_size <= 2097152) {
+                    $file_name_new = uniqid('', true) . '.' . $file_ext;
+                    $file_destination = 'uploads/' . $file_name_new;
+
+                    if (!move_uploaded_file($file_tmp, $file_destination)) {
+                        die(mysqli_error($con));
+                    } else {
+                        $file_name = $file_name_new;
+                    }
+                }
+            }
+        }
+    }
+
+
+    $result = mysqli_query($con, "INSERT INTO admissions(first_name, last_name,	class, combination,	pschool, pgrade, dob, gender, nationality, home_district, home_address, religion, parent_name, parent_phone, parent_occupation, parent_email, date_received, recommendation) VALUES('$first_name', '$last_name', '$class', '$combination', '$pschool', '$pgrade', '$dob', '$gender', '$nationality', '$home_district', '$home_address', '$religion', '$parent_name', '$parent_phone', '$parent_occupation', '$parent_email', NOW(), '$file_name')") or die(mysqli_error($con));
 
     if ($result) {
         $success = "true";
@@ -76,7 +121,7 @@ if (isset($_POST["submit"])) {
         </div>
     <?php } ?>
 
-    <form action="admissions.php" method="POST" id="admission">
+    <form action="admissions.php" method="POST" id="admission" enctype="multipart/form-data">
 
         <div class="form-group mt-5">
             <div class="form-row">
@@ -157,6 +202,20 @@ if (isset($_POST["submit"])) {
                     </div>
                 </div>
                 <input type="text" name="pgrade" class="form-control" placeholder="Previous Grade ex(31 Aggregates/16 Points)" required>
+            </div>
+        </div>
+
+        <!-- RECOMMENDATION LETTER -->
+        <div class="form-group">
+            <label for="recommendation">Recommendation Letter</label>
+
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">
+                        <i class="fa fa-file-text"></i>
+                    </div>
+                </div>
+                <input type="file" name="recommendation" class="form-control" placeholder="Recommendation Letter" required>
             </div>
         </div>
 

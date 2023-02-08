@@ -396,6 +396,11 @@ input {
     margin-top: 30px;
 }
 
+/* CAROUSEL */
+.caption-bottom{
+    background-color: red !important;
+}
+
 .cards i {
     display: flex;
     font-size: 40px;
@@ -626,9 +631,9 @@ input {
     padding-top: 10px;
     padding-bottom: 10px;
 }
+ 
 
 /* ABOUT US PAGE */
-
 .about-head {
     background: url("assets/bg7.jpeg");
     background-repeat: no-repeat;
