@@ -200,7 +200,7 @@ if (!isset($_SESSION["admin_username"])) {
           <a href="../index.php" class="text-white">
             <i class="fa fa-home"></i>
           </a>
-          <h4 class="text-white mx-auto font-weight-bold my-auto mityana-title">MITYANA STANDARD SS - KAGAVU</h4>
+          <h4 class="text-white mx-auto font-weight-bold my-auto mityana-title">MITYANA STANDARD SS - KAGAVU | Academic Information Management System (MIMS)</h4>
           <ul class="navbar-nav ml-auto">
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

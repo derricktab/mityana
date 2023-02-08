@@ -595,12 +595,30 @@ input {
 }
 
 .values .card {
-    height: 310px;
+    height: 320px;
     width: 250px;
     border-radius: 20px;
     margin-right: 10px;
     margin-left: 10px;
 
+}
+
+.admin .card {
+    height: 330px;
+    width: 250px;
+    border-radius: 20px;
+    margin-right: 10px;
+    margin-left: 10px;
+
+}
+
+.admin h6{
+    border-radius: 20px;
+    padding-top: 6px;
+    padding-bottom: 4px;
+    padding-right: 6px;
+    padding-left: 6px;
+    background-color: orange;
 }
 
 .apply-btn {
@@ -694,4 +712,16 @@ input {
     }
 }
 
-/* GALLERY */
+/* ADMINISTRATION */
+.card-border-top{
+    color: orange;
+    background-color: orange;
+    width: 200px;
+}
+
+.admin-body img{
+    height: 200px;
+    width: 150px;
+    /* border-radius: 100%; */
+    /* border-image: round, 1, 2; */
+}

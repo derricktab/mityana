@@ -14,7 +14,7 @@
     <h2 class="pb-2">CO-CURRICULAR ACTIVITIES</h2>
     <div class="row">
         <div class="col-md-6">
-            <img src="assets/activities.jpg" alt="Co Curricular Activities" width="500" class="activities-img">
+            <img src="assets/director_flagging.jpeg" alt="Co Curricular Activities" width="500" class="activities-img">
         </div>
         <div class="col-md-6">
             <p>Co-curricular activities make school life enjoyable. Like the saying goes, all work without play makes John a dull boy. How would we know that our students are talented if we only judged them against academics! An opportunity is therefor given for the to participate in various activities outside class. They are each encouraged to belong to at least one club or society.
@@ -31,25 +31,18 @@
     <h2 class="pb-2 text-center pt-5 pb-3">STUDENT CLUBS AND SOCIETIES</h2>
     <div class="row">
         <div class="col-md-6">
-            <p> Mityana Standard SS is dedicated to developing the total person mentally, physically, socially and spiritually. In addition to daily scheduled classes a variety of activities such as games, clubs and societies are offered to the students.
-
-The overall rationale of these clubs and societies is to help develop optimally sharp persons. 
-<br><br>
-<b>Objectives</b> <br>
-
-• To foster friendly relationships among the wide cross section of the school population. <br>
-
-• To expose students to an extensive variety of sporting, academic and service club activities. <br>
-
-• To instill a sense of belonging to a formal social group, while aiding the development of leadership skills and attitude among all students. <br>
-
-• Preparing students for the wider world so that they will be able to make valuable contributions within and outside their communities.  <br>
-
-The School has a number of Clubs and Societies as described below with their current patrons.</p>
+            <p> Mityana  standard SS -Kagavu appreciates the development of an all-round citizen who is fully mentally , phyiscally ,socially and spiritually equiped to face the too competitive dynamic generation .we not only bookworm our learners but also engage them in different activities such as games , clubs and societies  in order to make them useful citizens.
+<br>
+<b>Clubs Among Others Include</b> <br>
+1.Faith based clubs <br>
+2.Tribe Based Clubs <br>
+3.Different international student clubs <br>
+4.Academic clubs <br>
+among others
         </div>        
         
         <div class="col-md-6">
-            <img src="assets/cactivities2.jpeg" alt="Co Curricular Activities" width="500" class="activities-img">
+            <img src="assets/club.jpeg" alt="Co Curricular Activities" width="500" class="activities-img">
         </div>
 
     </div>

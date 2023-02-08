@@ -3,7 +3,7 @@ include("dbcon.php");
 
 $success = "";
 
-if(isset($_POST["submit"])){
+if (isset($_POST["submit"])) {
 
     $firstname = htmlentities($_POST["fname"], ENT_QUOTES, "UTF-8");
     $lastname = htmlentities($_POST["lname"], ENT_QUOTES, "UTF-8");
@@ -13,13 +13,11 @@ if(isset($_POST["submit"])){
 
     $result = mysqli_query($con, "INSERT INTO contact(firstname, lastname, email, phonenumber, message) VALUES('$firstname', '$lastname', '$email', '$phonenumber', '$message')");
 
-    if($result){
+    if ($result) {
         $success = "true";
-    }
-    else{
+    } else {
         $success = "false";
     }
-
 }
 
 
@@ -34,27 +32,27 @@ if(isset($_POST["submit"])){
 </div>
 
 <!-- DISPLAYING THE SUCCESS MESSAGE -->
-<?php if($success == "true") { ?>
-<div class="container c-alert">
-    <div class="alert alert-success alert-dismissible fade show" role="alert">
-    <strong>SUCCESS!</strong> &nbsp; Your Message Has been sent successfully.
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-    </button>
-    </div>
-</div>
-
-<!-- ERROR MESSAGE -->
-<?php } elseif($success == "false") { ?>
+<?php if ($success == "true") { ?>
     <div class="container c-alert">
-    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-    <strong>ERROR!</strong> &nbsp; Failed to send message, please try again later.
-    <?php echo mysqli_error($con); ?>
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-    </button>
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>SUCCESS!</strong> &nbsp; Your Message Has been sent successfully.
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
     </div>
-</div>
+
+    <!-- ERROR MESSAGE -->
+<?php } elseif ($success == "false") { ?>
+    <div class="container c-alert">
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <strong>ERROR!</strong> &nbsp; Failed to send message, please try again later.
+            <?php echo mysqli_error($con); ?>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    </div>
 <?php } ?>
 
 
@@ -70,28 +68,28 @@ if(isset($_POST["submit"])){
             <form action="contact.php" method="POST">
 
                 <div class="form-row">
-                <div class="form-group col-md-6">
-                    <label for="">First Name</label>
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <div class="input-group-text">
-                                <i class="fas fa-user"></i>
+                    <div class="form-group col-md-6">
+                        <label for="">First Name</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <i class="fas fa-user"></i>
+                                </div>
                             </div>
+                            <input type="text" name="fname" class="form-control" placeholder="Enter Your First Name" required>
                         </div>
-                        <input type="text" name="fname" class="form-control" placeholder="Enter Your First Name" required>
                     </div>
-                </div>
 
-                <div class="form-group col-md-6">
-                    <label for="">Last Name</label>
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <div class="input-group-text">
-                                <i class="fas fa-user"></i>
+                    <div class="form-group col-md-6">
+                        <label for="">Last Name</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <i class="fas fa-user"></i>
+                                </div>
                             </div>
+                            <input type="text" name="lname" class="form-control" placeholder="Enter Your Last Name" required>
                         </div>
-                        <input type="text" name="lname" class="form-control" placeholder="Enter Your Last Name" required>
-                    </div>
                     </div>
                 </div>
 
@@ -134,31 +132,78 @@ if(isset($_POST["submit"])){
 <div class="details">
     <div class="row w-100">
         <div class="col-md-4">
-        <div class="cards mx-auto">
-            <i class="fa fa-map-marker-alt"></i>
-            <h5 class="d-flex justify-content-center mt-3 font-weight-bold text-warning">ADDRESS</h5>
-            <p class="d-flex justify-content-center">Plot 333,Kagavu Road. 3KM Off Mityana Road.</p>
-        </div>            
+            <div class="cards mx-auto">
+                <i class="fa fa-map-marker-alt"></i>
+                <h5 class="d-flex justify-content-center mt-3 font-weight-bold text-warning">ADDRESS</h5>
+                <p class="d-flex justify-content-center">Plot 333,Kagavu Road. 3KM Off Mityana Road.</p>
+            </div>
         </div>
 
-    <div class="col-md-4">
-        <div class="cards mx-auto">
-            <i class="fa fa-phone"></i>
-            <h5 class="d-flex justify-content-center mt-3 font-weight-bold text-warning">PHONE</h5>
-            <p class="d-flex justify-content-center">0772852858 / 0753818803</p>
-        </div>    
+        <div class="col-md-4">
+            <div class="cards mx-auto">
+                <i class="fa fa-phone"></i>
+                <h5 class="d-flex justify-content-center mt-3 font-weight-bold text-warning">PHONE</h5>
+                <p class="d-flex justify-content-center">0772852858 / 0753818803</p>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="cards mx-auto">
+                <i class="fa fa-envelope"></i>
+                <h5 class="d-flex justify-content-center mt-3 font-weight-bold text-warning">EMAIL</h5>
+                <p class="d-flex justify-content-center">info@mityanastandard.com</p>
+            </div>
+        </div>
+
+    </div>
+    <br><br><br>
+    <br><br><br>
+    <h5 class="text-center l-s">OUR</h5>
+    <h2 class="text-center l-h">CONTACT OFFICES</h2>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="cards mx-auto">
+                <h5 class="d-flex justify-content-center mt-3 font-weight-bold text-warning">KAMPALA</h5>
+                <p class="d-flex justify-content-center">Mukwano Arcade: Baby’s View Choice Shop 0702924978 </p>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="cards mx-auto">
+                <h5 class="d-flex justify-content-center mt-3 font-weight-bold text-warning">KANSANGA</h5>
+                <p class="d-flex text-center">Mafuta’s Shop Nabutiti Road </p>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="cards mx-auto">
+                <h5 class="d-flex justify-content-center mt-3 font-weight-bold text-warning">MITYANA</h5>
+                <p class="d-flex text-center">New Mityana Bookshop / Picfare, Opossite Centenary Bank</p>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="cards mx-auto">
+                <h5 class="d-flex justify-content-center mt-3 font-weight-bold text-warning">MUBENDE</h5>
+                <p class="d-flex text-center">KASANA BOOKSHOP (0781566275)</p>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="cards mx-auto">
+                <h5 class="d-flex justify-content-center mt-3 font-weight-bold text-warning">BUKUYA</h5>
+                <p class="d-flex justify-content-center">MAAMA SANYU’S SHOP</p>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="cards mx-auto">
+                <h5 class="d-flex justify-content-center mt-3 font-weight-bold text-warning">LIRA & APAC</h5>
+                <p class="d-flex justify-content-center">Adimo Ambrose Joseph <br>  +256772478182  <br> +256780193775</p>
+            </div>
+        </div>
     </div>
 
-    <div class="col-md-4">
-        <div class="cards mx-auto">
-            <i class="fa fa-envelope"></i>
-            <h5 class="d-flex justify-content-center mt-3 font-weight-bold text-warning">EMAIL</h5>
-            <p class="d-flex justify-content-center">info@mityanastandard.com</p>
-        </div>        
-    </div>
-
-    </div>
-    
 </div>
 
 <!-- GOOGLE MAP OF THE SCHOOL -->
