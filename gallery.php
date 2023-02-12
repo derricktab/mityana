@@ -131,12 +131,12 @@ clip-path: polygon(50% 0%, 95% 25%, 95% 75%, 50% 100%, 5% 75%, 5% 25%);
 <div class = "gallery">
   <!-- IMAMGE 1 -->
   <div class="clipped-border shadow">
-    <img src="assets/bg6.jpg" id="clipped">
+    <img src="assets/new_pics/lab.jpeg" id="clipped">
   </div>
 
   <!-- IMAGE 2 -->
   <div class="clipped-border">
-    <img src="assets/activities.jpg" id="clipped">
+    <img src="assets/new_pics/experiments.jpeg" id="clipped">
   </div>
 
   <!-- IMAGE 3 -->
@@ -161,7 +161,7 @@ clip-path: polygon(50% 0%, 95% 25%, 95% 75%, 50% 100%, 5% 75%, 5% 25%);
 
   <!-- IMAGE 7 -->
     <div class="clipped-border">
-    <img src="assets/cactivities1.jpg" id="clipped">
+    <img src="assets/new_pics/student.jpeg" id="clipped">
   </div>
 
   <!-- IMAGE 8 -->

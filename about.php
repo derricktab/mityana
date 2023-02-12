@@ -25,7 +25,7 @@
     </div>
 
     <div class="col-md-6">
-      <img src="assets/bg6.jpg" alt="LINK IMAGE FOR MITYANA STANDARD SS">
+      <img src="assets/new_pics/unique.jpeg" alt="LINK IMAGE FOR MITYANA STANDARD SS">
     </div>
   </div>
 </div>
