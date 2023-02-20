@@ -437,10 +437,6 @@ input {
         margin-top: 10px !important;
         margin-bottom: 10px;
     }
-
-    .tel {
-        /* display: none !important; */
-    }
 }
 
 
@@ -459,7 +455,16 @@ input {
 }
 
 .mail {
-    margin-right: 2rem !important;
+    text-align: right;
+}
+
+.tel {
+    text-align: left;
+}
+
+.events-body{
+    margin-right: 50px;
+    margin-left: 50px;
 }
 
 .f-icon {
@@ -729,4 +734,8 @@ input {
     width: 150px;
     /* border-radius: 100%; */
     /* border-image: round, 1, 2; */
+}
+
+.into-text{
+    font-size: 21px;
 }

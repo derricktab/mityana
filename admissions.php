@@ -189,7 +189,7 @@ if (isset($_POST["submit"])) {
                         <i class="fa fa-building"></i>
                     </div>
                 </div>
-                <input type="text" name="pschool" class="form-control" placeholder="Previous School" required>
+                <input type="text" name="pschool" class="form-control" placeholder="Previous School" >
             </div>
         </div>
 
@@ -201,7 +201,7 @@ if (isset($_POST["submit"])) {
                         <i class="fa fa-graduation-cap"></i>
                     </div>
                 </div>
-                <input type="text" name="pgrade" class="form-control" placeholder="Previous Grade ex(31 Aggregates/16 Points)" required>
+                <input type="text" name="pgrade" class="form-control" placeholder="Previous Grade ex(31 Aggregates/16 Points)">
             </div>
         </div>
 
@@ -215,7 +215,7 @@ if (isset($_POST["submit"])) {
                         <i class="fa fa-file-text"></i>
                     </div>
                 </div>
-                <input type="file" name="recommendation" class="form-control" placeholder="Recommendation Letter" required>
+                <input type="file" name="recommendation" class="form-control" placeholder="Recommendation Letter">
             </div>
         </div>
 
@@ -224,19 +224,19 @@ if (isset($_POST["submit"])) {
         <div class="form-group">
             <label><b>GENDER: </b> </label>
             <div class="form-check form-check-inline">
-                <input type="radio" name="gender" class="form-check-input radio" value="Male" required />
+                <input type="radio" name="gender" class="form-check-input radio" value="Male" />
                 <label class="form-check-label pl-2">Male</label>
             </div>
 
             <div class="form-check form-check-inline">
-                <input type="radio" name="gender" class="form-check-input radio" value="Female" required />
+                <input type="radio" name="gender" class="form-check-input radio" value="Female" />
                 <label class="form-check-label pl-2">Female</label>
             </div>
         </div>
 
         <!-- DATE OF BIRTH -->
         <div class="form-group">
-            <input id="datepicker" class="form-control mr-0" placeholder="Date Of Birth" name="dob" required />
+            <input id="datepicker" class="form-control mr-0" placeholder="Date Of Birth" name="dob"  />
         </div>
 
         <!-- NATIONALITY -->
@@ -247,7 +247,7 @@ if (isset($_POST["submit"])) {
                         <i class="fas fa-flag"></i>
                     </div>
                 </div>
-                <input type="text" name="nationality" id="nationality" class="form-control" placeholder="Nationality" required>
+                <input type="text" name="nationality" id="nationality" class="form-control" placeholder="Nationality" >
             </div>
         </div>
 
@@ -259,7 +259,7 @@ if (isset($_POST["submit"])) {
                         <i class="fa fa-igloo"></i>
                     </div>
                 </div>
-                <input type="text" name="home_district" class="form-control" placeholder="Home District" required>
+                <input type="text" name="home_district" class="form-control" placeholder="Home District" >
             </div>
         </div>
 
@@ -271,7 +271,7 @@ if (isset($_POST["submit"])) {
                         <i class="fa fa-map-marker-alt"></i>
                     </div>
                 </div>
-                <input type="text" name="home_address" class="form-control" placeholder="Home Address" required>
+                <input type="text" name="home_address" class="form-control" placeholder="Home Address" >
             </div>
         </div>
 
@@ -283,7 +283,7 @@ if (isset($_POST["submit"])) {
                         <i class="fa fa-pray"></i>
                     </div>
                 </div>
-                <input type="text" name="religion" class="form-control" placeholder="Religion" required>
+                <input type="text" name="religion" class="form-control" placeholder="Religion" >
             </div>
         </div>
 
@@ -297,7 +297,7 @@ if (isset($_POST["submit"])) {
                         <i class="fa fa-signature"></i>
                     </div>
                 </div>
-                <input type="text" class="form-control" placeholder="Parent/Guardian's Name" name="p_name" required>
+                <input type="text" class="form-control" placeholder="Parent/Guardian's Name" name="p_name" >
             </div>
         </div>
 
@@ -309,7 +309,7 @@ if (isset($_POST["submit"])) {
                         <i class="fa fa-briefcase"></i>
                     </div>
                 </div>
-                <input type="text" class="form-control" placeholder="Parent/Guardian's Occupation" name="p_occupation" required>
+                <input type="text" class="form-control" placeholder="Parent/Guardian's Occupation" name="p_occupation" >
             </div>
         </div>
 
@@ -321,7 +321,7 @@ if (isset($_POST["submit"])) {
                         <i class="fa fa-phone"></i>
                     </div>
                 </div>
-                <input type="text" class="form-control" placeholder="Parent/Guardian's Phone Number" name="p_phone" required>
+                <input type="text" class="form-control" placeholder="Parent/Guardian's Phone Number" name="p_phone" >
             </div>
         </div>
 
@@ -333,7 +333,7 @@ if (isset($_POST["submit"])) {
                         <i class="fa fa-envelope"></i>
                     </div>
                 </div>
-                <input type="email" class="form-control" placeholder="Parent/Guardian's Email" name="p_email" required>
+                <input type="email" class="form-control" placeholder="Parent/Guardian's Email" name="p_email">
             </div>
         </div>
 

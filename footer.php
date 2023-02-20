@@ -80,7 +80,7 @@
                 <!-- EMAIL -->
                 <div class="row mt-2">
                     <div class="col-1"> <i class="fas fa-envelope f-icon"></i> </div>
-                    <div class="col-11">info@mityanastandard.com</div>
+                    <div class="col-sm-11">info@mityanastandard.com</div>
                 </div>
             </div>
         </div>

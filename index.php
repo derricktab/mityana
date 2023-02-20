@@ -84,14 +84,6 @@
 
   @media(max-width: 480px) {
 
-    .carousel-item {
-
-      width: 100% !important;
-      height: 30% !important;
-      bottom: 0;
-    }
-
-
     .carousel-item img {
       width: 100% !important;
       background-size: contain !important;
@@ -187,8 +179,8 @@
   </div>
 
   <div class="col-md-6 w-text">
-    <h2 class="text-center my-3 font-weight-bold">WELCOME NOTE &nbsp; <i class="fas fa-marker"></i></h2>
-    <p style="font-size: 21px;" class="pt-3">The school was founded in 1997 to provide quality education to both national and international students based on the ugandan curriculum of education ,
+    <h2 class="text-center my-3 font-weight-bold into-title">WELCOME NOTE &nbsp; <i class="fas fa-marker"></i></h2>
+    <p class="pt-3 intro-text">The school was founded in 1997 to provide quality education to both national and international students based on the ugandan curriculum of education ,
       the school was an effort of three great men who combined resources to start a once small secondary school which has transformed overtime to become a great
       institution of learning in the heart of Mityana district .the school offers general academic subjects and vocational, 20 in number, and a wide range
       of sports activities. The school admits students of all faiths.
@@ -204,7 +196,7 @@
 
     <!-- VISION -->
     <div class="col-md-3 col-sm-6">
-      <div class="card shadow" style="border: 1px solid orange;">
+      <div class="card shadow mt-4" style="border: 1px solid orange;">
         <i class="fab fa-dribbble d-flex mx-auto" style="background-color: orange"></i>
         <div class="card-body text-center">
           <h5 class="font-weight-bold v-h pb-1">SCHOOL VISION</h5>
@@ -215,7 +207,7 @@
 
     <!-- MISSION -->
     <div class="col-sm-6 col-md-3">
-      <div class="card shadow" style="border: 1px solid maroon;">
+      <div class="card shadow mt-4" style="border: 1px solid maroon;">
         <i class="fa fa-bullseye d-flex mx-auto text-white" style="background-color: maroon"></i>
         <div class="card-body text-center">
           <h5 class="font-weight-bold v-h pb-1">SCHOOL MISSION</h5>
@@ -226,7 +218,7 @@
 
     <!-- CORE VALUES -->
     <div class="col-sm-6 col-md-3">
-      <div class="card shadow" style="border: 1px solid green;">
+      <div class="card shadow mt-4" style="border: 1px solid green;">
         <div class="card-head">
           <i class="fa fa-tachometer d-flex mx-auto text-white" style="background-color: green"></i>
         </div>
@@ -248,7 +240,7 @@
 
     <!-- MOTO -->
     <div class="col-sm-6 col-md-3">
-      <div class="card shadow" style="border: 1px solid blue;">
+      <div class="card shadow mt-4" style="border: 1px solid blue;">
         <div class="card-head">
           <i class="fa fa-fire d-flex mx-auto text-white" style="background-color: blue"></i>
         </div>
@@ -311,7 +303,7 @@
   </div>
 
 
-  <div class="row mx-5 my-4">
+  <div class="row my-4 events-body">
 
   <!-- EVENT 1 -->
     <div class="col-md-6">

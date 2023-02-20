@@ -1,0 +1,80 @@
+@media(max-width: 720px) {
+    .d-img{
+        margin-top: 20px !important;
+    }
+
+    .values .card{
+        width: 90% !important;
+    }
+
+    .into-text{
+        font-size: 18px !important;
+    }
+    .values{
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
+    }
+    .into-title{
+        font-size: 27px !important;
+    }
+    .wrap h3{
+        margin-left: 50px !important;
+        padding-left: 10px;
+    }
+
+    .event{
+        margin-right: 0 !important;
+        margin-bottom: 20px !important;
+    }
+
+    .carousel-item{
+        height: 650px !important;
+    }
+    .carousel-caption h2{
+        font-size: 20px !important;
+        padding-right: 5px !important;
+        padding-left: 5px !important;
+    }
+    .carousel-caption h3{
+        font-size: 20px !important;
+        padding-right: 5px !important;
+        padding-left: 5px !important;
+    }
+
+    .mail {
+        text-align: center !important;
+    }
+    
+    .tel {
+        text-align: center !important;
+        margin-bottom: 8px;
+    }
+
+    .events-body{
+        margin-right: 30px;
+        margin-left: 30px;
+    }
+
+    .card{
+        margin-top: 20px !important;
+    }
+
+    .about-head .wrap h1 {
+        align-items: center;
+        font-size: 40px;
+        margin-left: 70px;
+    }
+
+    .about-head{
+        height: 250px;
+    }
+
+    .history{
+        text-align: center;
+    }
+    
+    .unique{
+        text-align: center;
+    }
+
+}
