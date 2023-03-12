@@ -11,7 +11,7 @@ if(isset($_GET["class"])){
   $query = "SELECT * FROM students WHERE class='$class'";
 
 }else{
-  $query = "SELECT * FROM STUDENTS";
+  $query = "SELECT * FROM students";
 }
 
 ?>
