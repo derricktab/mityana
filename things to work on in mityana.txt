@@ -1,0 +1,18 @@
+Making the enter marks page responsive
+Add a table to the teachers dashboard to display marks entered.
+work on the report card
+replace C with AOT on the report card.
+AOT 1 / 20, AOT2 / 20 -> TOTAL AOT / 20 EOT / 80
+ADD TWO COLUMNS COMPETENCE AND REMARK
+provision to add teacher's picture.
+show subjects assigned to the teacher in the admin dashboard
+edit subjects assigned to a teacher.
+make the user dashboard
+make the id responsive
+make change password responsive
+how to show the students and their parents
+add current term on the terms page.
+update student class when third term ends
+fix student ids on admin dashboard
+work on displaying the student marks in the admin dashboard.
+enroll students to a given class

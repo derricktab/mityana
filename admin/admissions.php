@@ -60,7 +60,7 @@ if (isset($_POST["approved"])) {
 
     // Check if $uploadOk is set to 0 by an error
     if ($uploadOk == 0) {
-    // if everything is ok, try to upload file
+      // if everything is ok, try to upload file
     } else {
       if (move_uploaded_file($_FILES["student_image"]["tmp_name"], $target_file)) {
       } else {
@@ -139,7 +139,7 @@ if (isset($_POST["approved"])) {
     $password = password_hash($student_no, PASSWORD_DEFAULT);
 
     // ADDING THE STUDENT TO THE DATABASE
-    $add_student = mysqli_query($con, "INSERT INTO students(student_id, first_name, last_name, image, class, stream, combination, dob, gender, nationality, home_district, home_address, religion, parent, date_admitted, username, password) VALUES('$student_no', '$first_name', '$last_name', '$target_file', '$class', '$stream', '$combination', '$dob', '$gender', '$nationality', '$home_district', '$home_address', '$religion', '$parent_no', NOW(), '$username', '$password')") or die("MINE: ".mysqli_error($con));
+    $add_student = mysqli_query($con, "INSERT INTO students(student_id, first_name, last_name, image, class, stream, combination, dob, gender, nationality, home_district, home_address, religion, parent, date_admitted, username, password) VALUES('$student_no', '$first_name', '$last_name', '$target_file', '$class', '$stream', '$combination', '$dob', '$gender', '$nationality', '$home_district', '$home_address', '$religion', '$parent_no', NOW(), '$username', '$password')") or die("MINE: " . mysqli_error($con));
 
     // CHECKING IF THE STUDENT WAS INSERTED INTO THE DATABASE
     if ($add_student) {
@@ -277,25 +277,60 @@ if (isset($_POST["reject"])) {
 
               $result = mysqli_query($con, "SELECT * FROM admissions");
               while ($row = mysqli_fetch_array($result)) {
-              ?>
+                ?>
                 <tr>
-                  <td> <?php echo $row["id"] ?> </td>
-                  <td> <?php echo $row["first_name"] ?> </td>
-                  <td> <?php echo $row["last_name"] ?> </td>
-                  <td> <?php echo $row["class"] ?> </td>
-                  <td> <?php echo $row["combination"] ?> </td>
-                  <td> <?php echo $row["dob"] ?> </td>
-                  <td> <?php echo $row["gender"] ?> </td>
-                  <td> <?php echo $row["nationality"] ?> </td>
-                  <td> <?php echo $row["home_district"] ?> </td>
-                  <td> <?php echo $row["home_address"] ?> </td>
-                  <td> <?php echo $row["religion"] ?> </td>
-                  <td> <?php echo $row["parent_name"] ?> </td>
-                  <td> <?php echo $row["parent_phone"] ?> </td>
-                  <td> <?php echo $row["parent_email"] ?> </td>
-                  <td> <?php echo $row["parent_occupation"] ?> </td>
-                  <td> <?php echo $row["date_received"] ?> </td>
-                  <td> <?php echo $row["recommendation"] ?> </td>
+                  <td>
+                    <?php echo $row["id"] ?>
+                  </td>
+                  <td>
+                    <?php echo $row["first_name"] ?>
+                  </td>
+                  <td>
+                    <?php echo $row["last_name"] ?>
+                  </td>
+                  <td>
+                    <?php echo $row["class"] ?>
+                  </td>
+                  <td>
+                    <?php echo $row["combination"] ?>
+                  </td>
+                  <td>
+                    <?php echo $row["dob"] ?>
+                  </td>
+                  <td>
+                    <?php echo $row["gender"] ?>
+                  </td>
+                  <td>
+                    <?php echo $row["nationality"] ?>
+                  </td>
+                  <td>
+                    <?php echo $row["home_district"] ?>
+                  </td>
+                  <td>
+                    <?php echo $row["home_address"] ?>
+                  </td>
+                  <td>
+                    <?php echo $row["religion"] ?>
+                  </td>
+                  <td>
+                    <?php echo $row["parent_name"] ?>
+                  </td>
+                  <td>
+                    <?php echo $row["parent_phone"] ?>
+                  </td>
+                  <td>
+                    <?php echo $row["parent_email"] ?>
+                  </td>
+                  <td>
+                    <?php echo $row["parent_occupation"] ?>
+                  </td>
+                  <td>
+                    <?php echo $row["date_received"] ?>
+                  </td>
+                  <td class="text-center">
+                    <a href="../uploads/<?php echo $row["recommendation"] ?>"><img src="../assets/images/doc.png" alt="recommendation" height="50" >
+                    </a>
+                  </td>
                   <!-- approved button -->
                   <td>
                     <div class="row">
@@ -336,7 +371,8 @@ if (isset($_POST["reject"])) {
   <!--Row-->
 
   <!-- Modal Logout -->
-  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabelLogout" aria-hidden="true">
+  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabelLogout"
+    aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
