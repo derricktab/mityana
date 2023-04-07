@@ -188,11 +188,48 @@ a:hover{
     margin-left: 20px;
 }
 
-.pw-form-wrapper{
-    margin-left: 150px !important;
-    margin-right: 150px !important;
-}
 
 td input{
     height: 32px !important;
 }
+
+
+.pw-form-wrapper {
+    margin-left: 15rem !important;
+    margin-right: 15rem !important;
+  }
+  
+  .header {
+    display: block;
+  }
+  
+  .mobile-header {
+    display: none !important;
+  }
+
+  .main-container{
+    margin-left: 5rem;
+  }
+  
+  @media (max-width: 920px) {
+    .main-container{
+        margin: 0 !important;
+    }
+    .pw-form-wrapper {
+      margin-left: 2rem !important;
+      margin-right: 2rem !important;
+    }
+  
+    .mityana-text {
+      font-size: 0.6rem;
+    }
+  
+    .header {
+      display: none;
+    }
+  
+    .mobile-header {
+      display: block !important;
+    }
+  }
+  

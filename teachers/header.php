@@ -157,7 +157,8 @@ if(isset($_SESSION["teacher_username"]) && $_SESSION["teacher"] == "true"){
           <a href="../index.php" class="text-white">
             <i class="fa fa-home"></i>
 </a>
-          <h5 class="mx-auto my-auto text-white font-weight-bold mityana-text">MITYANA STANDARD SECONDARY SCHOOL - KAGAVU</h5>
+          <h5 class="mx-auto my-auto text-white font-weight-bold mityana-text header">MITYANA STANDARD SECONDARY SCHOOL - KAGAVU</h5>
+          <h5 class="mx-auto my-auto text-white font-weight-bold mityana-text mobile-header">MIMS</h5>
         </nav>
         <!-- Topbar -->
 
