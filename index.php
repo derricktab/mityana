@@ -121,7 +121,7 @@
     <div class="carousel-item active">
       <img src="assets/new_pics/hm.jpeg" alt="" srcset="">
       <div class="carousel-caption caption">
-        <h2>2023 ADMISSIONS OPEN FOR TERM 1</h2><br>
+        <h2>2023 ADMISSIONS OPEN FOR TERM 2</h2><br>
         <button class="btn btn-success"><a href="admissions.php"> APPLY NOW</a></button>
       </div>
     </div>
@@ -309,15 +309,15 @@
     <div class="col-md-6">
       <div class="row event">
         <div class="col-md-2">
-          <p class="event-month">FEB</p>
-          <P class="event-day">10</P>
+          <!-- <p class="event-month">FEB</p>
+          <P class="event-day">10</P> -->
         </div>
         <div class="col-md-6">
-          <p class="event-title">RELEASE OF S4 RESULTS!</p>
-          <p class="event-description">This Friday, we shall be releasing the results of S4 candidates that sat for their UCE last year.</p>
+          <p class="event-title">MDD COMPETITION!</p>
+          <p class="event-description">Fuel your creativity at MDD Competition, where innovation meets design excellence. Unleash your potential and be recognized!</p>
         </div>
         <div class="col-md-4">
-          <img src="assets/images/results.jpeg" class="event-image" alt="Event Image">
+          <img src="https://th.bing.com/th/id/OIG.hZAngt8DCf8WgFp.iBQ.?pid=ImgGn" class="event-image" alt="Event Image">
         </div>
       </div>
     </div>
@@ -326,8 +326,8 @@
     <div class="col-md-6">
       <div class="row event">
         <div class="col-md-2">
-          <!-- <p class="event-month">JUN</p>
-          <P class="event-day">17</P> -->
+          <p class="event-month">JUN</p>
+          <P class="event-day">26</P>
         </div>
         <div class="col-md-6">
           <p class="event-title">VISITATION DAY</p>

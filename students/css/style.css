@@ -75,11 +75,7 @@ a:hover {
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   font-size: large;
 }
-@media (max-width: 720px) {
-  .mityana-text {
-    font-size: 0.6rem;
-  }
-}
+
 
 .std-id {
   color: orange;
@@ -137,6 +133,7 @@ a:hover {
   border-top-right-radius: 35px;
   border-bottom-right-radius: 35px;
 }
+
 .sch-title {
   /* position: relative; */
   color: black;
