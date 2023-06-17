@@ -125,3 +125,8 @@ a:hover{
     margin-bottom: 130px !important;
     border: 3px solid rgba(111, 9, 9, 0.859) ;
 }
+
+
+body{
+    min-height: max-content !important;
+}

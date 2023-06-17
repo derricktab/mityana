@@ -165,11 +165,19 @@ if (!isset($_SESSION["admin_username"])) {
         STAFF
       </div>
 
-      <!-- CURRENT YEAR -->
+      <!-- TEACHERS -->
       <li class="nav-item" id="teachers">
         <a class="nav-link" href="teachers.php">
           <i class="fas fa-fw fa-chart-area"></i>
           <span>Teachers</span>
+        </a>
+      </li>
+
+      <!-- TEACHERS AND SUBJECTS -->
+      <li class="nav-item" id="teachers_and_subjects">
+        <a class="nav-link" href="teachers_and_subjects.php">
+          <i class="fas fa-fw fa-chart-area"></i>
+          <span>Teachers & Subjects</span>
         </a>
       </li>
 

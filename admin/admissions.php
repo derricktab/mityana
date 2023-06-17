@@ -159,6 +159,7 @@ if (isset($_POST["approved"])) {
       ('$student_no', 'BIOLOGY'),
       ('$student_no', 'PHYSICS'),
       ('$student_no', 'HISTORY'),
+      ('$student_no', 'I.C.T'),
       ('$student_no', 'GEOGRAPHY') ") or die(mysqli_errno($con));
 
         // IF STUDENT IS IN ALEVEL

@@ -8,6 +8,8 @@ $subject_name = "";
 $code = "";
 $teacher_username = "";
 $teacher_name = "";
+$class = "";
+$subject = "";
 
 if(isset($_GET["tid"])){
 
