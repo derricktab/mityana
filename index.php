@@ -327,10 +327,10 @@
       <div class="row event">
         <div class="col-md-2">
           <p class="event-month">JUN</p>
-          <P class="event-day">26</P>
+          <P class="event-day">25</P>
         </div>
         <div class="col-md-6">
-          <p class="event-title">VISITATION DAY</p>
+          <p class="event-title">VISITATION DAY & PARENTS MEETING</p>
           <p class="event-description">Gates will be opened by 9AM and will close at 6PM</p>
         </div>
         <div class="col-md-4">
