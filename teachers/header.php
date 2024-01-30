@@ -2,6 +2,10 @@
 include("../dbcon.php");
 session_start();
 
+error_reporting(E_ALL);
+ini_set('display-errors', 1);
+
+
 $firstname = "";
 $lastname = "";
 $student_id = "";
@@ -29,11 +33,13 @@ if(isset($_SESSION["teacher_username"]) && $_SESSION["teacher"] == "true"){
 
   $fullname = $row["full_name"];
   $teacher_id = $row["id"];
+  $_SESSION['teacher_id'] = $teacher_id;
   $email = $row["email"];
   $phonenumber = $row["phonenumber"];
   $address = $row["address"];
   $salary = $row["salary"];
   $password = $row["password"];
+  $profile = $row["profile_pic"];
 
 }else{
   header("location: ../401.php");
@@ -59,21 +65,121 @@ if(isset($_SESSION["teacher_username"]) && $_SESSION["teacher"] == "true"){
   <link href="css/style.css" rel="stylesheet">
   <script src="vendor/jquery/jquery.min.js"></script>
 
+  <style>
+    .popup{
+            animation: transitionIn-Y-bottom 0.5s;
+        }
+        .sub-table{
+            animation: transitionIn-Y-bottom 0.5s;
+        }
+    .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    opacity: 1;
+    z-index: 3;
+  }
+  .overlay:target {
+    visibility: visible;
+    opacity: 1;
+    
+  }
+  
+  .popup {
+    margin: 10px auto;
+    padding: 10px;
+    background: #fff;
+    border-radius: 5px;
+    width: 70%;
+    position: relative;
+    transition: all 5s ease-in-out;
+    z-index: 3;
+  }
+  
+  .popup h2 {
+    margin-top: 0;
+    color: #333;
+  }
+  .popup .close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    transition: all 200ms;
+    font-size: 30px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #333;
+  }
+  .popup .close:hover {
+    color: var(--primarycolorhover);
+  }
+  .popup .content {
+    /* max-height: 30%; */
+    overflow: auto;
+  }
+  
+  @media screen and (max-width: 700px){
+    .box{
+      width: 70%;
+    }
+    .popup{
+      width: 70%;
+    }
+  }
+  #hide{
+    display:none;
+  }
+  i{
+    cursor:pointer;
+  }
+
+
+
+
+
+    </style>
+
 </head>
 
 <body id="page-top">
   <div id="wrapper">
     <!-- Sidebar -->
     <ul class="navbar-nav sidebar sidebar-light accordion" id="accordionSidebar">
-      <a class="sidebar-brand align-items-center justify-content-center" href="index.php">
-        <div class="student-pic rounded">
-          <img src="../assets/placeholder.jpg">
-        </div>
+      <span class="sidebar-brand align-items-center justify-content-center" >
+      <div class="student-pic rounded">
+  <img src="uploads/<?php echo $profile ?>" alt="Student profile picture">
+  <i onclick=showForm() class="fa fa-edit btn btn-outline-secondary "></i>
+
+  <script>
+    function showForm(){
+      x = document.getElementById('hide');
+      if(x.style.display == 'flex'){
+        x.style.display = 'none';
+      }else{
+        x.style.display = 'flex';
+      }
+    }
+  </script>
+  
+  <br><br>
+  <form id="hide"  action="upload.php" method="post" enctype="multipart/form-data">
+    <input  class="btn btn-primary" type="file" name="profile_picture" id="profile_picture" accept="image/*">
+    <!-- <label for="profile_picture">Choose new picture</label> -->
+    <button class="btn btn-danger" type="submit">Save</button>
+  </form>
+  <!-- <p id = "message2">Profile updated successfully</p> -->
+</div>
+
+
         <!-- DISPLAYING THE TEACHER'S NAME NAME -->
         <div class="mx-3 mt-3 std-name font-weight-bold"><?php echo $fullname?> </div>
         <!-- DISPLAYING STUDENT ID -->
         <div class="mx-3 mt-1 std-id"><?php echo $teacher_id ?> </div>
-      </a>
+</span>
       <hr class="sidebar-divider my-0">
 
 
@@ -116,10 +222,29 @@ if(isset($_SESSION["teacher_username"]) && $_SESSION["teacher"] == "true"){
 
       <!-- REPORT CARD -->
       <li class="nav-item" id="report_card">
-        <a class="nav-link collapsed" href="report_card.php" 
+        <a class="nav-link collapsed" href="students_report_card.php" 
           aria-expanded="true" aria-controls="collapseBootstrap">
           <i class="fa fa-address-card"></i>
           <span>Report Card</span>
+        </a>
+
+      </li>
+      <!-- ENROLL STUDENTS -->
+      <li class="nav-item" id="enroll">
+        <a class="nav-link collapsed" href="subjects.php" 
+          aria-expanded="true" aria-controls="collapseBootstrap">
+          <i class="fa fa-address-card"></i>
+          <span>Enroll Students</span>
+        </a>
+
+      </li>
+
+      <!-- ENROLL STUDENTS -->
+      <li class="nav-item" id="enroll">
+        <a class="nav-link collapsed" href="promote.php" 
+          aria-expanded="true" aria-controls="collapseBootstrap">
+          <i class="fa fa-check"></i>
+          <span>Promote Students</span>
         </a>
 
       </li>
@@ -157,8 +282,7 @@ if(isset($_SESSION["teacher_username"]) && $_SESSION["teacher"] == "true"){
           <a href="../index.php" class="text-white">
             <i class="fa fa-home"></i>
 </a>
-          <h5 class="mx-auto my-auto text-white font-weight-bold mityana-text header">MITYANA STANDARD SECONDARY SCHOOL - KAGAVU</h5>
-          <h5 class="mx-auto my-auto text-white font-weight-bold mityana-text mobile-header">MIMS</h5>
+          <h5 class="mx-auto my-auto text-white font-weight-bold mityana-text">MITYANA STANDARD SECONDARY SCHOOL - KAGAVU</h5>
         </nav>
         <!-- Topbar -->
 

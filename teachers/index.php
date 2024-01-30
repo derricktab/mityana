@@ -1,6 +1,6 @@
 <?php include("header.php") ?>
 
-<div class="container-fluid main-container">
+<div class="container-fluid m-5">
 
     <div class="row mt-5">
         <div class="col-md-4">
@@ -17,10 +17,8 @@
                         $result1 = mysqli_query($con, "SELECT * FROM subject_offered WHERE subject = '$subject'");
 
                         $no_of_students = mysqli_num_rows($result1);
-                        ?>
-                        <li class="list-group-item">
-                            <?php echo $subject . " - " . $class ?>
-                        </li>
+                    ?>
+                    <li class="list-group-item"><?php echo $subject." - ".$class ?> </li>
 
                     <?php } ?>
 
@@ -48,21 +46,11 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td>
-                            <?php echo $fullname ?>
-                        </td>
-                        <td>
-                            <?php echo $email ?>
-                        </td>
-                        <td>
-                            <?php echo $phonenumber ?>
-                        </td>
-                        <td>
-                            <?php echo $address ?>
-                        </td>
-                        <td>
-                            <?php echo number_format($salary) ?>
-                        </td>
+                        <td><?php echo $fullname ?> </td>
+                        <td><?php echo $email ?> </td>
+                        <td><?php echo $phonenumber ?> </td>
+                        <td><?php echo $address ?> </td>
+                        <td><?php echo number_format($salary)  ?> </td>
                     </tr>
                 </tbody>
             </table>

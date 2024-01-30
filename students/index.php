@@ -1,6 +1,6 @@
 <?php include("header.php") ?>
 
-<div class="container-fluid main-container">
+<div class="container-fluid m-5">
     <div class="row mx-auto mt-5">
 
         <div class="col-md-5 col-6 text-right">

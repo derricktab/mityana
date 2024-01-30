@@ -1,6 +1,9 @@
 
 <!-- Including the header -->
-<?php include("header.php"); ?>
+<?php include("header.php");
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+ ?>
 
   <!-- Container Fluid-->
   <div class="container-fluid" id="container-wrapper">
@@ -12,8 +15,9 @@
       </ol>
     </div>
 <?php
-$result = mysqli_query($con, "SELECT * FROM STUDENTS");
+$result = mysqli_query($con, "SELECT * FROM students");
 $n_students = mysqli_num_rows($result);
+
 
 ?>
     <div class="row mb-3">

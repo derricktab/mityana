@@ -39,13 +39,13 @@
   <div class="row">
 
 
-    <!-- VISION -->
+    <!-- HEAD TEACHER -->
     <div class="col-md-3 col-sm-6">
       <div class="card shadow" style="border: 1px solid orange;">
-        <img src="assets/admins/namuye vincent hm.png" alt="HM">
+        <img src="assets/images/headteacher.jpg" alt="HM" class="staff-image">
         <div class="card-body text-center">
-          <h6 class="font-weight-bold v-h pb-1">MR. NAMUYE VINCENT</h6>
-          <p>Head Teacher <br> +256 772 382612 </p>
+          <h6 class="font-weight-bold v-h pb-1">MR. KALULE JOHN </h6>
+          <p>Head Teacher <br> </p>
         </div>
       </div>
     </div>
@@ -53,7 +53,7 @@
     <!-- MUNYAGWA FRANCIS -->
     <div class="col-sm-6 col-md-3">
       <div class="card shadow" style="border: 1px solid orange;">
-        <img src="assets/admins/munyagwa new.png" alt="" height="200">
+        <img src="assets/admins/munyagwa new.png" alt="" class="staff-image">
         <div class="card-body text-center">
           <h6 class="font-weight-bold v-h pb-1">MR. MUNYAGWA FRANCIS</h6>
           <p>Deputy Head Teacher - Academics <br> +256 753 649011 </p>
@@ -64,7 +64,7 @@
     <!-- SSEMUGABI RICHARD -->
     <div class="col-sm-6 col-md-3">
       <div class="card shadow" style="border: 1px solid orange;">
-        <img src="assets/admins/ssemugabi richard dp displinary.png" alt="" height="200">
+        <img src="assets/admins/ssemugabi richard dp displinary.png" alt="" class="staff-image">
         <div class="card-body text-center">
           <h6 class="font-weight-bold v-h pb-0">MR. SSEMUGABI RICHARD</h6>
           <p>Deputy Head Teacher - Displinary <br> +256 706 702217</p>
@@ -75,7 +75,7 @@
     <!-- KYOBE JULIUS -->
     <div class="col-sm-6 col-md-3">
       <div class="card shadow" style="border: 1px solid orange;">
-        <img src="assets\admins\kyobe_julius_DOS-removebg-preview.png" alt="" height="200">
+        <img src="assets\admins\kyobe_julius_DOS-removebg-preview.png" alt="" class="staff-image">
         <div class="card-body text-center">
           <h6 class="font-weight-bold v-h pb-1">MR. KYOBE JULIUS</h6>
           <p>Director Of Studies <br> +256 751191366 </p>
@@ -100,38 +100,38 @@
 
     <tr>
       <td>S1</td>
-      <td>250,000/=</td>
-      <td>805,000/=</td>
+      <td>420,000/=</td>
+      <td>910,000/=</td>
     </tr>
 
     <tr>
       <td>S2</td>
-      <td>250,000/=</td>
-      <td>805,000/=</td>
+      <td>420,000/=</td>
+      <td>910,000/=</td>
     </tr>
 
     <tr>
       <td>S3</td>
-      <td>250,000/=</td>
-      <td>805,000/=</td>
+      <td>420,000/=</td>
+      <td>910,000/=</td>
     </tr>
 
     <tr>
       <td>S4</td>
-      <td>266,000/=</td>
-      <td>805,000/=</td>
+      <td>420,000/=</td>
+      <td>910,000/=</td>
     </tr>
 
     <tr>
       <td>S5</td>
-      <td>301,500/=</td>
-      <td>855,000/=</td>
+      <td>420,000/=</td>
+      <td>910,000/=</td>
     </tr>
 
     <tr>
       <td>S6</td>
-      <td>301500/=</td>
-      <td>855,000/=</td>
+      <td>420,000/=</td>
+      <td>910,000/=</td>
     </tr>
   </table>
 

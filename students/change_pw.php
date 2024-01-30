@@ -1,34 +1,34 @@
 <?php include("header.php") ?>
 
-<?php
+<?php 
 $success = "";
 
-if (isset($_POST["change_password"])) {
+if(isset($_POST["change_password"])){
 
     $old_password = htmlentities($_POST["old_password"], ENT_QUOTES, "UTF-8");
     $new_password = htmlentities($_POST["new_password"], ENT_QUOTES, "UTF-8");
     $confirm_password = htmlentities($_POST["confirm_password"], ENT_QUOTES, "UTF-8");
 
-    if ($new_password != $confirm_password) {
+    if($new_password != $confirm_password){
         $success = "false";
         $error_message = "PASSWORDS DON'T MATCH";
     }
 
     $password_verified = password_verify($old_password, $password);
 
-    if ($password_verified) {
+    if($password_verified){
 
         $new_password = password_hash($new_password, PASSWORD_DEFAULT);
 
         $result = mysqli_query($con, "UPDATE students SET password='$new_password' WHERE student_id='$student_id'") or die(mysqli_error($con));
 
-        if ($result) {
+        if($result){
             $success = "true";
-        } else {
+        }else{
             $success = "false";
             $error_message = "WRONG OLD PASSWORD ENTERED";
         }
-    } else {
+    }else{
         $success = "false";
         $error_message = "WRONG OLD PASSWORD ENTERED";
     }
@@ -40,27 +40,26 @@ if (isset($_POST["change_password"])) {
     <h1 class="font-weight-bold text-center text-dark pt-5 pb-2">CHANGE PASSWORD</h1>
 
     <!-- DISPLAYING THE SUCCESS MESSAGE -->
-    <?php if ($success == "true") { ?>
-        <div class="container a-alert">
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                <strong>SUCCESS!</strong> &nbsp; Password Updated Succesfully.
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
+    <?php if($success == "true") { ?>
+    <div class="container a-alert">
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>SUCCESS!</strong> &nbsp; Password Updated Succesfully.
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
         </div>
+    </div>
 
-        <!-- ERROR MESSAGE -->
-    <?php } elseif ($success == "false") { ?>
+    <!-- ERROR MESSAGE -->
+    <?php } elseif($success == "false") { ?>
         <div class="container a-alert">
-            <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                <strong>ERROR!</strong> &nbsp;
-                <?php echo $error_message ?>
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <strong>ERROR!</strong> &nbsp; <?php echo $error_message ?>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
         </div>
+    </div>
     <?php } ?>
 
     <form action="change_pw.php" method="POST" class="mt-4">
@@ -98,18 +97,16 @@ if (isset($_POST["change_password"])) {
                         <i class="fa fa-graduation-cap"></i>
                     </div>
                 </div>
-                <input type="password" name="confirm_password" class="form-control" placeholder="Confirm Password"
-                    required>
+                <input type="password" name="confirm_password" class="form-control" placeholder="Confirm Password" required>
             </div>
         </div>
 
         <!-- SUBMIT BUTTON -->
         <div class="form-group">
-            <input type="submit" value="CHANGE PASSWORD" class="btn btn-primary submit form-control"
-                name="change_password">
+            <input type="submit" value="CHANGE PASSWORD" class="btn btn-primary submit form-control" name="change_password">
         </div>
     </form>
-
+    
     <a href="index.php" class="text-dark">Back To Home</a>
 
 </div>

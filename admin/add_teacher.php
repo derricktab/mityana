@@ -130,6 +130,10 @@ if(isset($_POST["add_teacher"])){
             </div>
         </div>
 
+
+        </div>
+
+
         <!-- SUBMIT BUTTON -->
         <div class="form-group">
             <input type="submit" value="SUBMIT" class="btn btn-warning submit form-control" name="add_teacher">

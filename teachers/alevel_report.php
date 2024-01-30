@@ -82,7 +82,7 @@
     <h1 class="mx-auto mt-5 mb-5 t-report">O-LEVEL PROGRESS REPORT TERM II</h1>
   </div>
 
-  <div class="table-responsive">
+  <div style="overflow-x: auto;" class="table-responsive">
     <table class="table table-bordered report-table">
 
       <thead class="thead-light">

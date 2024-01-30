@@ -51,7 +51,7 @@ if(isset($_POST["delete"])){
 
         
         <!-- ADD CLASS BUTTON -->
-        <a href="add_class.php" class="btn btn-primary add-button">ADD CLASS</a>
+        <a href="add_class.php" class="btn btn-primary add-button">ADD STREAM TO A CLASS</a>
 
         <!-- TABLE -->
         <div class="table-responsive p-3">

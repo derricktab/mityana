@@ -2,19 +2,28 @@
 
 <?php 
 $success = "";
+$error = "";
 
 if(isset($_POST["submit"])){
 
     $class = htmlentities($_POST["class"], ENT_QUOTES, "UTF-8");
     $stream = htmlentities($_POST["stream"], ENT_QUOTES, "UTF-8");
 
-    $result = mysqli_query($con, "INSERT INTO class_and_stream(class, stream) VALUES('$class', '$stream')");
-
-    if($result){
-        $success = "true";
+    $result = mysqli_query($con, "SELECT * FROM class_and_stream WHERE class='$class' and stream='$stream' ");
+    $num_rows = mysqli_num_rows($result);
+    if($num_rows >= 1){
+        $error = "true";
     }else{
-        $success = "false";
+        $error = "false";
+        $result = mysqli_query($con, "INSERT INTO class_and_stream(class, stream) VALUES('$class', '$stream')");
+
+        if($result){
+            $success = "true";
+        }else{
+            $success = "false";
+        }
     }
+    
 }
 
 ?>
@@ -22,7 +31,18 @@ if(isset($_POST["submit"])){
 <div class="form-wrapper mx-auto my-5">
     <h1 class="font-weight-bold text-center text-white">Add Class</h1>
 
-    <!-- DISPLAYING THE SUCCESS MESSAGE -->
+    <?php if($error == "true"){ ?>
+        <div class="container a-alert">
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <strong>ERROR!</strong> &nbsp; Something Went Wrong.........Stream already assigned to this class
+        <?php echo mysqli_error($con); ?>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
+        </div>
+    <?php }elseif($error == "false"){ ?>
+        <!-- DISPLAYING THE SUCCESS MESSAGE -->
     <?php if($success == "true") { ?>
     <div class="container a-alert">
         <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -45,6 +65,8 @@ if(isset($_POST["submit"])){
         </div>
     </div>
     <?php } ?>
+    <?php } ?>
+    
 
     <form action="add_class.php" method="POST" class="mt-4">
 

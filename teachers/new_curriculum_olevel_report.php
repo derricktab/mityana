@@ -30,27 +30,45 @@
 
   </div>
   <div class="card-body">
+
+  <?php
+    $student_id = $_GET['id'];
+    $name = $_GET['name'];
+
+      // echo "id" .$student_id;
+      $result = mysqli_query($con, "SELECT * FROM marks_old WHERE student='$student_id'");
+
+      $student_details = mysqli_query($con, "SELECT * FROM students WHERE student_id = '$student_id'");
+      $row = mysqli_fetch_assoc($student_details);
+      // $name = $row['first_name'];
+      $gender = $row['gender'];
+      $st_class = $row['class'];
+      $stream = $row['stream'];
+      
+    ?>
     
   <div class="row mt-4">
     <!-- student image -->
     <div class="col-md-3">
-      <img src="../admin/<?php echo $student_image ?>" alt="Placeholder" class="s-photo">
+      <?php if($gender == 'Male') { ?>
+      <img src="./img/boy.png" class="s-photo">
+
+      <?php }elseif($gender == 'Female'){ ?>
+        <img src="./img/girl.png" class="s-photo">
+      <?php } ?>
     </div>
 
-    <?php
-      $result = mysqli_query($con, "SELECT * FROM marks_old WHERE student='$student_id'");
-
-    ?>
+    
     <!-- COL 1 -->
     <div class="col-md-4">
       <div class="row">
-        <p class="h-text"><b>Student Name:</b> <?php echo $firstname." ".$lastname ?></p>
+        <p class="h-text"><b>Student Name:</b> <?php echo $name ?></p>
       </div>
       <div class="row">
         <p class="h-text"><b>Gender:</b> <?php echo $gender ?> </p>
       </div>
       <div class="row">
-        <p class="h-text"><b>Class:</b> <?php echo $class ?> </p>
+        <p class="h-text"><b>Class:</b> <?php echo $st_class ?> </p>
       </div>
       <div class="row">
         <p class="h-text"><b>Stream:</b> <?php echo $stream ?> </p>
@@ -81,51 +99,46 @@
   </div>
 
   <div class="table-responsive">
-    <table class="table table-bordered report-table">
+  <table class="table table-bordered report-table">
 
-      <thead class="thead-light">
-        <tr>
-          <!-- <th>CODE</th> -->
-          <th>SUBJECT</th>
-          <th>C1</th>
-          <th>C2</th>
-          <th>C3</th>
-          <th>C4</th>
-          <th>C5</th>
-          <th>C6</th>
-          <th>C7</th>
-          <th>C8</th>
-          <th>C9</th>
-          <th>Average Score</th>
-          <th>Out Of 20</th>
-          <th>Initials</th>
-        </tr>
-      </thead>
+<thead class="thead-light">
+  <tr>
+    <!-- <th>CODE</th> -->
+    <th>SUBJECT</th>
+    <th>BOT(%)</th>
+    <th>MID(%)</th>
+    <th>END(%)</th>
+    <th>AV(%)</th>
+    <th>AGG.</th>
+    <th>REMARK</th>
+    <th>Initials</th>
+  </tr>
+</thead>
 
-      <tbody>
-    <?php while($row = mysqli_fetch_array($result)){  ?>
-        <tr>
-          <td><?php echo $row["subject"] ?> </td>
-          <td><?php echo $row["bot"] ?> </td>
-          <td><?php echo $row["mid"] ?> </td>
-          <td><?php echo $row["end"] ?> </td>
-          <td><?php echo "68" ?> </td>
-          <td><?php echo "35" ?> </td>
-          <td><?php echo "Fairly Good" ?> </td>
-          <td><?php echo "K.D" ?> </td>
-          
-        </tr>
+<tbody>
+<?php while($row = mysqli_fetch_array($result)){  ?>
+  <tr>
+    <td><?php echo $row["subject"] ?> </td>
+    <td><?php echo $row["bot"] ?> </td>
+    <td><?php echo $row["mid"] ?> </td>
+    <td><?php echo $row["end"] ?> </td>
+    <td><?php echo ($row["bot"] + $row["mid"] + $row["end"])/3 ?> </td>
+    <td><?php echo "35" ?> </td>
+    <td><?php echo "Fairly Good" ?> </td>
+    <td><?php echo "K.D" ?> </td>
+    
+  </tr>
 <?php } ?>
 
-        <tr class="font-weight-bold text-dark">
-          <td colspan="6" class="text-right">TOTAL: </td>
-          <td>24</td>
-          <td colspan="2"></td>
-        </tr>
-        
-      </tbody>
+  <tr class="font-weight-bold text-dark">
+    <td colspan="7" class="text-right">TOTAL: </td>
+    <td>24</td>
+    <!-- <td colspan="1"></td> -->
+  </tr>
+  
+</tbody>
 
-    </table>
+</table>
   </div>
 
   <div class="row mx-2">

@@ -119,39 +119,47 @@
 
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img src="assets/new_pics/hm.jpeg" alt="" srcset="">
+      <img src="assets/images/headteacher1.jpg" alt="" srcset="">
       <div class="carousel-caption caption">
-        <h2>2023 ADMISSIONS OPEN FOR TERM 2</h2><br>
+        <h2>2024 ADMISSIONS OPEN FOR TERM 1</h2><br>
         <button class="btn btn-success"><a href="admissions.php"> APPLY NOW</a></button>
       </div>
     </div>
-    <div class="carousel-item">
-      <img src="assets\bg3.jpeg" alt="" srcset="">
 
-      <!-- <div class="carousel-caption caption">
-        <h3>Image 2</h3>
-        <p>Image 2 description</p>
-      </div> -->
-    </div>
     <div class="carousel-item">
-      <img src="assets\new_pics\WhatsApp Image 2022-10-31 at 12.46.00 AM (1).jpeg" alt="" srcset="">
+      <img src="assets/images/new1.jpg" alt="" srcset="">
+
+      <div class="carousel-caption caption">
+        <h3>Laboratories</h3>
+        <p>Well stocked and equipped library, science laboratory and computer laboratory</p>
+    
+      </div>
+    </div>
+
+    <div class="carousel-item">
+      <img src="assets\images\new2.jpg" alt="" srcset="">
 
       <div class="carousel-caption caption">
         <h3>Peaceful Environment</h3>
-        <p>Very Peaceful Environment that gives out students peace of mind.</p>
+        <p>Conducive learning environment where all students can learn and blossom to their full potential regardless of their differing needs, abilities or learning styles</p>
       </div>
     </div>
-    <div class="carousel-item">
-      <img src="assets\new_pics\computer.jpeg" alt="" srcset="">
+   
 
+    <div class="carousel-item">
+      <img src="assets\images\new3.jpg" alt="" srcset="">
       <div class="carousel-caption caption">
-        <h3>Well Equiped Computer Lab</h3>
-        <!-- <p>Very Peaceful Environment that gives out students peace of mind.</p> -->
+        <h3>Hands-On Learning</h3>
+        <p>Equip our students with vocational skills for sustainable livelihood</p>
       </div>
     </div>
 
     <div class="carousel-item">
-      <img src="assets\new_pics\st_kizito.jpeg" alt="" srcset="">
+      <img src="assets\images\new4.jpg" alt="" srcset="">
+      <div class="carousel-caption caption">
+        <h3>Agriculture</h3>
+        <p>Mityana standard is a supportive and strong community that values staff, learners and parents</p>
+      </div>
     </div>
 
 
@@ -184,7 +192,17 @@
       the school was an effort of three great men who combined resources to start a once small secondary school which has transformed overtime to become a great
       institution of learning in the heart of Mityana district .the school offers general academic subjects and vocational, 20 in number, and a wide range
       of sports activities. The school admits students of all faiths.
-      It provides secular education which is in line with the Uganda national goals and objectives-of education . </p>
+      It provides secular education which is in line with the Uganda national goals and objectives-of education. </p>
+
+      <p>Our vision is to anchor Mityana standard s.s as center of Academic excellence in Uganda.
+This is to be achieved through excellent teaching raising our students' self-esteem, and focusing on learners; individual abilities and potential towards their academic goals.
+We have a dedicated and committed staff that is supportive, friendly and works towards naturing a God fearing, hardworking and disciplined student into a responsible citizen. 
+Please feel free to contact us incase of inquiries for further information. 
+Education for development.
+</p>
+<b>Mr. Kalule John 
+</b> <br/>
+<i>Headteacher </i>
   </div>
 
 </div>
@@ -313,11 +331,11 @@
           <P class="event-day">10</P> -->
         </div>
         <div class="col-md-6">
-          <p class="event-title">MDD COMPETITION!</p>
-          <p class="event-description">Fuel your creativity at MDD Competition, where innovation meets design excellence. Unleash your potential and be recognized!</p>
+          <p class="event-title">VISITATION DAY</p>
+          <p class="event-description">DATE TO BE COMMUNICATED</p>
         </div>
         <div class="col-md-4">
-          <img src="https://th.bing.com/th/id/OIG.hZAngt8DCf8WgFp.iBQ.?pid=ImgGn" class="event-image" alt="Event Image">
+          <img src="assets/images/visitation.png" class="event-image" alt="Event Image">
         </div>
       </div>
     </div>
@@ -326,15 +344,17 @@
     <div class="col-md-6">
       <div class="row event">
         <div class="col-md-2">
-          <p class="event-month">JUN</p>
-          <P class="event-day">25</P>
+          <p class="event-month">MAR</p>
+          <P class="event-day">29</P>
         </div>
         <div class="col-md-6">
-          <p class="event-title">VISITATION DAY & PARENTS MEETING</p>
-          <p class="event-description">Gates will be opened by 9AM and will close at 6PM</p>
+          <p class="event-title">MITYANA STANDARD ALUMNI DINNER</p>
+          <p class="event-description">At Grace's Restaurant Lubowa.</p>
+          <p class="event-description">TOPIC: Restructuring Mityana Standard Alumni Community.</p>
+
         </div>
         <div class="col-md-4">
-          <img src="assets/images/visitation.png" class="event-image" alt="Event Image">
+          <img src="assets/images/poster.png" class="event-image" alt="Event Image">
         </div>
       </div>
     </div>

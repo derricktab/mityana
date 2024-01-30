@@ -53,11 +53,12 @@ if(isset($_GET["class"])){
             <tbody>
               <?php 
 
+              $sql = "SELECT * FROM students";
               $result = mysqli_query($con, $query);
               while($row = mysqli_fetch_array($result)){
               ?>
               <tr>
-                <td> <?php echo $row["student_id"] ?> </td>
+                <td> <?php echo "id" . $row["student_id"] ?> </td>
                 <td> <?php echo $row["first_name"] ?> </td>
                 <td> <?php echo $row["last_name"] ?> </td>
                 <td> <?php echo $row["class"] ?> </td>

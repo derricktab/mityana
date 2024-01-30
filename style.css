@@ -739,3 +739,7 @@ input {
 .into-text{
     font-size: 21px;
 }
+
+.staff-image{
+    height: 200px !important;
+}

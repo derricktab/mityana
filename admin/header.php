@@ -1,7 +1,7 @@
 <?php
-include("../dbcon.php");
-session_start();
 
+session_start();
+include("../dbcon.php");
 
 if (!isset($_SESSION["admin_username"])) {
   header("location: ../401.php");
@@ -24,12 +24,14 @@ if (!isset($_SESSION["admin_username"])) {
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
   <link href="css/admin.min.css" rel="stylesheet">
   <script src="vendor/jquery/jquery.min.js"></script>
-  <!-- <script src="js/html2canvas.js"></script> -->
+  <script src="js/html2canvas.js"></script>
   <link href="css/style.css" rel="stylesheet">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js">
-  </script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"> -->
+  <!-- </script> -->
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script> -->
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
 </head>
 
 <body id="page-top">
@@ -94,6 +96,49 @@ if (!isset($_SESSION["admin_username"])) {
         </a>
       </li>
 
+      <!-- STUDENT MARKS -->
+      <li class="nav-item" id="marks">
+        <a class="nav-link collapsed" href="marks.php" 
+          aria-expanded="true" aria-controls="collapseBootstrap">
+          <i class="far fa-fw fa-window-maximize"></i>
+          <span>Student Marks</span>
+        </a>
+      </li>
+
+      <!-- ENROLL STUDENTS -->
+      <li class="nav-item" id="enroll">
+        <a class="nav-link collapsed" href="promoted.php" 
+          aria-expanded="true" aria-controls="collapseBootstrap">
+          <i class="fa fa-check"></i>
+          <span>Promoted Students</span>
+        </a>
+
+      </li>
+
+
+      <li class="nav-item" id="promote_cards">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#promoteCollapse" aria-expanded="true" aria-controls="collapseForm">
+          <i class="fa fa-check"></i>
+          <span>Promote Students</span>
+        </a>
+        <div id="promoteCollapse" class="collapse" aria-labelledby="headingForm" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">O-LEVEL</h6>
+            <a class="collapse-item" href="promote.php?class=1">S1</a>
+            <a class="collapse-item" href="promote.php?class=2">S2</a>
+            <a class="collapse-item" href="promote.php?class=3">S3</a>
+            <a class="collapse-item" href="promote.php?class=4">S4</a>
+          </div>
+
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">A-LEVEL</h6>
+            <a class="collapse-item" href="promote.php?class=5">S5</a>
+            <a class="collapse-item"  href="promote.php?class=6">S6</a>
+          </div>
+        </div>
+
+      </li>
+
       <!-- Report Cards -->
       <li class="nav-item" id="report_cards">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#reportCollapse" aria-expanded="true" aria-controls="collapseForm">
@@ -103,16 +148,16 @@ if (!isset($_SESSION["admin_username"])) {
         <div id="reportCollapse" class="collapse" aria-labelledby="headingForm" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">O-LEVEL</h6>
-            <a class="collapse-item" href="report_card.php">S1</a>
-            <a class="collapse-item" href="report_card.php">S2</a>
-            <a class="collapse-item" href="report_card.php">S3</a>
-            <a class="collapse-item" href="report_card.php">S4</a>
+            <a class="collapse-item" href="students_reports.php?class=1">S1</a>
+            <a class="collapse-item" href="students_reports.php?class=2">S2</a>
+            <a class="collapse-item" href="students_reports.php?class=3">S3</a>
+            <a class="collapse-item" href="students_reports.php?class=4">S4</a>
           </div>
 
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">A-LEVEL</h6>
-            <a class="collapse-item" href="report_card.php">S5</a>
-            <a class="collapse-item" href="report_card.php">S6</a>
+            <a class="collapse-item" href="students_reports.php?class=5">S5</a>
+            <a class="collapse-item" href="students_reports.php?class=6">S6</a>
           </div>
         </div>
 
@@ -165,19 +210,11 @@ if (!isset($_SESSION["admin_username"])) {
         STAFF
       </div>
 
-      <!-- TEACHERS -->
+      <!-- CURRENT YEAR -->
       <li class="nav-item" id="teachers">
         <a class="nav-link" href="teachers.php">
           <i class="fas fa-fw fa-chart-area"></i>
           <span>Teachers</span>
-        </a>
-      </li>
-
-      <!-- TEACHERS AND SUBJECTS -->
-      <li class="nav-item" id="teachers_and_subjects">
-        <a class="nav-link" href="teachers_and_subjects.php">
-          <i class="fas fa-fw fa-chart-area"></i>
-          <span>Teachers & Subjects</span>
         </a>
       </li>
 
@@ -294,3 +331,6 @@ if (!isset($_SESSION["admin_username"])) {
             </div>
           </div>
         </div>
+          
+        </body>
+        </html>

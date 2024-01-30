@@ -62,7 +62,7 @@ if(isset($_POST["delete"])){
               <tr>
                 <th>ID</th>
                 <th>STREAM</th>
-                <th>Action</th>
+                <th>Action</th>zz
               </tr>
             </thead>
 

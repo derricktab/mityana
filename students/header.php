@@ -77,9 +77,9 @@ if(isset($_SESSION["student_username"]) && $_SESSION["student"] == "true"){
   <div id="wrapper">
     <!-- Sidebar -->
     <ul class="navbar-nav sidebar sidebar-light accordion" id="accordionSidebar">
-      <a class="sidebar-brand align-items-center justify-content-center text-center" href="index.php">
+      <a class="sidebar-brand align-items-center justify-content-center" href="index.php">
         <div class="student-pic rounded">
-          <img src="../<?php echo $student_image ?>">
+          <img src="../admin/<?php echo $student_image ?>">
         </div>
         <!-- DISPLAYING STUDENT NAME -->
         <div class="mx-3 mt-3 std-name font-weight-bold"><?php echo $firstname." ".$lastname ?> </div>
@@ -115,7 +115,17 @@ if(isset($_SESSION["student_username"]) && $_SESSION["student"] == "true"){
         <a class="nav-link collapsed" href="subjects.php" 
           aria-expanded="true" aria-controls="collapseBootstrap">
           <i class="fa fa-book"></i>
-          <span>Subjects</span>
+          <span>Subjects Offered</span>
+        </a>
+
+      </li>
+
+      <!-- SUBJECTS -->
+      <li class="nav-item" id="subjects">
+        <a class="nav-link collapsed" href="subjects.php" 
+          aria-expanded="true" aria-controls="collapseBootstrap">
+          <i class="fa fa-book"></i>
+          <span>All Subjects</span>
         </a>
 
       </li>
@@ -178,9 +188,7 @@ if(isset($_SESSION["student_username"]) && $_SESSION["student"] == "true"){
           <a href="../index.php" class="text-white">
             <i class="fa fa-home"></i>
 </a>
-          <h5 class="mx-auto my-auto text-white font-weight-bold mityana-text header">MITYANA STANDARD SECONDARY SCHOOL - KAGAVU</h5>
-
-          <h5 class="mx-auto my-auto text-white font-weight-bold mityana-text mobile-header">MIMS</h5>
+          <h5 class="mx-auto my-auto text-white font-weight-bold mityana-text">MITYANA STANDARD SECONDARY SCHOOL - KAGAVU</h5>
         </nav>
         <!-- Topbar -->
 

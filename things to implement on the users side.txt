@@ -1,0 +1,2 @@
+change password for the students
+change password for the teachers.

@@ -8,8 +8,6 @@ $subject_name = "";
 $code = "";
 $teacher_username = "";
 $teacher_name = "";
-$class = "";
-$subject = "";
 
 if(isset($_GET["tid"])){
 
@@ -31,21 +29,42 @@ if(isset($_POST["submit"])){
     echo $subject;
     echo $teacher_username;
 
-    $result = mysqli_query($con, "INSERT INTO teacher_subject(teacher, class, subject) VALUES('$teacher_username', '$class', '$subject') ");
+    $checker = mysqli_query($con, "SELECT * FROM teacher_subject WHERE class='$class' and subject='$subject' ");
 
-    if($result){
-        $success = "true";
+    $num_rows = mysqli_num_rows($checker);
+
+    if($num_rows >= 1){
+        $success2 = "true";
     }else{
-        $success = "false";
+        $success2 = "false";
+        $result = mysqli_query($con, "INSERT INTO teacher_subject(teacher, class, subject) VALUES('$teacher_username', '$class', '$subject') ");
+
+        if($result){
+            $success = "true";
+        }else{
+            $success = "false";
+        }
     }
+
+    
 }
 
 ?>
 
 <div class="form-wrapper mx-auto my-5">
     <h1 class="font-weight-bold text-center text-white">ASSIGN TEACHER SUBJECT</h1>
-
-    <!-- DISPLAYING THE SUCCESS MESSAGE -->
+    <?php if($success2 == "true"){ ?>
+        <div class="container a-alert">
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <strong>ERROR!</strong> &nbsp; Subject already assigned to another teacher
+        <?php echo mysqli_error($con); ?>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
+        </div>
+    <?php }elseif($success2 == "false"){ ?>
+        <!-- DISPLAYING THE SUCCESS MESSAGE -->
     <?php if($success == "true") { ?>
     <div class="container a-alert">
         <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -66,8 +85,11 @@ if(isset($_POST["submit"])){
             <span aria-hidden="true">&times;</span>
         </button>
         </div>
-    </div>
+        </div>
     <?php } ?>
+    <?php } ?>
+
+    
 
     <form action="teachers_subjects.php" method="POST" class="mt-4">
 
